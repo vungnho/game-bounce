@@ -23,6 +23,7 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>freetype</RootNamespace>
+    <ProjectName>FreeType2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,10 +67,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\..\bin</OutDir>
-    <IntDir>obj\x32\Debug\</IntDir>
-    <TargetName>freetype_lib_d</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <OutDir>../../$(Configuration)</OutDir>
+    <IntDir>$(Configuration)</IntDir>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -80,10 +79,8 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\..\..\bin</OutDir>
-    <IntDir>obj\x32\Release\</IntDir>
-    <TargetName>freetype_lib</TargetName>
-    <TargetExt>.lib</TargetExt>
+    <OutDir>../../$(Configuration)</OutDir>
+    <IntDir>$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\lib\vs2013\</OutDir>

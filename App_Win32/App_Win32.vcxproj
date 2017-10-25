@@ -58,7 +58,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/bin/libGLESv2.lib;../Libraries/bin/libEGL.lib;../Libraries/bin/glew.lib;../Libraries/bin/glfw.lib;../Libraries/bin/freetype_lib_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/glew/$(Configuration)/glew.lib;../Libraries/glfw/$(Configuration)/glfw.lib;../Libraries/FreeType2/$(Configuration)/FreeType2.lib;../Libraries/bin/libGLESv2.lib;../Libraries/bin/libEGL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -74,7 +74,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/bin/libGLESv2.lib;../Libraries/bin/libEGL.lib;../Libraries/bin/glew.lib;../Libraries/bin/glfw.lib;../Libraries/bin/freetype_lib_d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/glew/$(Configuration)/glew.lib;../Libraries/glfw/$(Configuration)/glfw.lib;../Libraries/FreeType2/$(Configuration)/FreeType2.lib;../Libraries/bin/libGLESv2.lib;../Libraries/bin/libEGL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

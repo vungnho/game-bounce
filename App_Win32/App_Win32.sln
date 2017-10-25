@@ -13,6 +13,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "..\Game\Game.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Box2D", "..\Libraries\Box2D\Box2D.vcxproj", "{CD3B1EB0-BBE5-48F4-B528-68DA722EE60A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "..\Libraries\glew\glew.vcxproj", "{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfw", "..\Libraries\glfw\glfw.vcxproj", "{8E13A642-AE14-4AAD-B555-42B8B5AB4845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -53,6 +57,18 @@ Global
 		{CD3B1EB0-BBE5-48F4-B528-68DA722EE60A}.Release|Win32.ActiveCfg = Release|Win32
 		{CD3B1EB0-BBE5-48F4-B528-68DA722EE60A}.Release|Win32.Build.0 = Release|Win32
 		{CD3B1EB0-BBE5-48F4-B528-68DA722EE60A}.Release|x64.ActiveCfg = Release|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Debug|Win32.Build.0 = Debug|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Debug|x64.ActiveCfg = Debug|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Release|Win32.ActiveCfg = Release|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Release|Win32.Build.0 = Release|Win32
+		{9CD341DA-3B6E-48E3-8399-39AFB5D66E10}.Release|x64.ActiveCfg = Release|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Debug|Win32.Build.0 = Debug|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Debug|x64.ActiveCfg = Debug|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|Win32.ActiveCfg = Release|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|Win32.Build.0 = Release|Win32
+		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
