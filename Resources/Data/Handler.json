@@ -1,0 +1,83 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "id" : 0,
+            "moveable" : false,
+            "name" : "Pause",
+            "position" : [ 763, 564 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 22, 23 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 1,
+            "moveable" : false,
+            "name" : "Reload",
+            "position" : [ 683, 564 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 21 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 2,
+            "moveable" : false,
+            "name" : "Touch Point",
+            "position" : [ 768, 490 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 33, 33, 31 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 3,
+            "moveable" : false,
+            "name" : "Touch Move",
+            "position" : [ 768, 490 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 33, 33, 32 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 5,
+            "moveable" : false,
+            "name" : "Arrow Right",
+            "position" : [ 738, 63 ],
+            "rotation" : [ -87 ],
+            "scale" : [ 2.0, 2.0 ],
+            "texture" : [ 3, 8 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 6,
+            "moveable" : false,
+            "name" : "Arrow Left",
+            "position" : [ 56, 57 ],
+            "rotation" : [ 90 ],
+            "scale" : [ 2.0, 2.0 ],
+            "texture" : [ 3, 8 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         },
+         {
+            "id" : 7,
+            "moveable" : false,
+            "name" : "Arrow Up",
+            "position" : [ 58, 183 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 2.0, 2.0 ],
+            "texture" : [ 3, 8 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "handler"
+         }
+      ]
+   }
+}

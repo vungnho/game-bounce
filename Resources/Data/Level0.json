@@ -1,0 +1,182 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "id" : 0,
+            "moveable" : false,
+            "name" : "BackGroundSky",
+            "position" : [ 2482, 273 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 112.0, 112.0 ],
+            "texture" : [ 26 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "background"
+         },
+         {
+            "id" : 1,
+            "moveable" : false,
+            "name" : "BackGround",
+            "position" : [ 200, 275 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 64.0, 12.0 ],
+            "texture" : [ 25 ],
+            "tile" : [ 2.0, 1.0 ],
+            "type" : "background"
+         },
+         {
+            "id" : 2,
+            "moveable" : true,
+            "name" : "Bounce",
+            "position" : [ 278, 282 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.8000000119209290, 0.8000000119209290 ],
+            "texture" : [ 5 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "bounce"
+         },
+         {
+            "id" : 3,
+            "moveable" : false,
+            "name" : "Ground 1",
+            "position" : [ 779, 0 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 32.0, 2.0 ],
+            "texture" : [ 13 ],
+            "tile" : [ 16.0, 1.0 ],
+            "type" : "object"
+         },
+         {
+            "id" : 4,
+            "moveable" : false,
+            "name" : "Wall 1",
+            "position" : [ 41, 550 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 4.0, 20.0 ],
+            "texture" : [ 17 ],
+            "tile" : [ 2.0, 10.0 ],
+            "type" : "object"
+         },
+         {
+            "id" : 5,
+            "moveable" : true,
+            "name" : "Gai nhon",
+            "position" : [ 626, 78 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.3000000119209290, 0.3000000119209290 ],
+            "texture" : [ 24 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "thorn"
+         },
+         {
+            "id" : 6,
+            "moveable" : false,
+            "name" : "Cloud",
+            "position" : [ 811, 363 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 2.0, 1.0 ],
+            "texture" : [ 14 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "cloud"
+         },
+         {
+            "id" : 7,
+            "moveable" : false,
+            "name" : "Brick 1",
+            "position" : [ 1186, 151 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 5.0, 4.0 ],
+            "texture" : [ 15 ],
+            "tile" : [ 5.0, 4.0 ],
+            "type" : "object"
+         },
+         {
+            "id" : 8,
+            "moveable" : true,
+            "name" : "Candy",
+            "position" : [ 173, 79 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.50, 0.50 ],
+            "texture" : [ 11 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "food"
+         },
+         {
+            "id" : 9,
+            "moveable" : true,
+            "name" : "Box",
+            "position" : [ 951, 104 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 2.0, 2.0 ],
+            "texture" : [ 18 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "object"
+         },
+         {
+            "id" : 10,
+            "moveable" : false,
+            "name" : "Wall 2",
+            "position" : [ 1412, 550 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 4.0, 20.0 ],
+            "texture" : [ 17 ],
+            "tile" : [ 2.0, 10.0 ],
+            "type" : "object"
+         },
+         {
+            "id" : 11,
+            "moveable" : false,
+            "name" : "Loi ra",
+            "position" : [ 1262, 312 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 2.0, 2.50 ],
+            "texture" : [ 19 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "target"
+         },
+         {
+            "id" : 12,
+            "moveable" : false,
+            "name" : "Gai nhon",
+            "position" : [ 1289, 675 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.3000000119209290, 0.3000000119209290 ],
+            "texture" : [ 27 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "thorn"
+         },
+         {
+            "id" : 13,
+            "moveable" : false,
+            "name" : "Gai nhon",
+            "position" : [ 163, 694 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.3000000119209290, 0.3000000119209290 ],
+            "texture" : [ 27 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "thorn"
+         },
+         {
+            "id" : 14,
+            "moveable" : true,
+            "name" : "Candy",
+            "position" : [ 943, 238 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 0.50, 0.50 ],
+            "texture" : [ 11 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "food"
+         },
+         {
+            "id" : 15,
+            "moveable" : false,
+            "name" : "Brick 1",
+            "position" : [ 387, 75 ],
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 15 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "object"
+         }
+      ]
+   }
+}

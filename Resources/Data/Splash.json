@@ -1,0 +1,34 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 0,
+            "moveable" : false,
+            "name" : "Bounce",
+            "position" : [ 408, 230 ],
+            "pxSize" : 380.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 6.0, 6.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button",
+            "value" : "a"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 1,
+            "moveable" : false,
+            "name" : "Tourch any where...",
+            "position" : [ 418, 152 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button",
+            "value" : "b"
+         }
+      ]
+   }
+}

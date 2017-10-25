@@ -1,0 +1,321 @@
+{
+    "models":
+    {
+        "data": [
+        {
+            "id": 886988,
+            "name" : "Ground",
+            "type" : "vertices",
+            "file": "../resources/models/Ground.json"
+        },
+        {
+            "id": 7121,
+            "name" : "Triangle",
+            "type" : "vertices",
+            "file": "../resources/models/Triangle.json"
+        },
+        {
+            "id": 7122,
+            "name" : "Triangle",
+            "type" : "vertices",
+            "file": "../resources/models/Hexagon.json"
+        },
+        {
+            "id": 7,
+            "name" : "Square",
+            "type" : "vertices",
+            "file": "../resources/models/Square.json"
+        },
+        {
+            "id": 8,
+            "name" : "Sprite Square",
+            "type" : "sprite",
+            "data": [ 0, 0, 100, 100, 100, 100 ]
+        },
+        {
+            "id": 9,
+            "name" : "Sprite Rect",
+            "type" : "sprite",
+            "data": [ 0, 0, 200, 100, 200, 100 ]
+        },
+        {
+            "id": 10,
+            "name" : "Sprite 3",
+            "type" : "sprite",
+            "data": [ 0, 0, 25, 25, 100, 75 ]
+        },
+        {
+            "id": 11,
+            "name" : "Sprite 3",
+            "type" : "sprite",
+            "data": [ 0, 0, 200, 50, 200, 50 ]
+        }]
+    },
+    "textures":
+    {
+        "data": [
+        {
+            "id": 5,
+            "file": "../resources/textures/bounce.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 7,
+            "file": "../resources/textures/arr2_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 8,
+            "file": "../resources/textures/arr_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 6,
+            "file": "../resources/textures/arr2_02.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 3,
+            "file": "../resources/textures/arr_02.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 11,
+            "file": "../resources/textures/candy.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 12,
+            "file": "../resources/textures/background.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 13,
+            "file": "../resources/textures/gr.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 14,
+            "file": "../resources/textures/cloud.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 15,
+            "file": "../resources/textures/brick.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 17,
+            "file": "../resources/textures/brok.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 18,
+            "file": "../resources/textures/box.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 19,
+            "file": "../resources/textures/door.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 20,
+            "file": "../resources/textures/background2.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 21,
+            "file": "../resources/textures/reload_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 22,
+            "file": "../resources/textures/pause_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 23,
+            "file": "../resources/textures/play_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 24,
+            "file": "../resources/textures/gai.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 25,
+            "file": "../resources/textures/backgroundLV1.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 26,
+            "file": "../resources/textures/sky.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 27,
+            "file": "../resources/textures/gai2.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 28,
+            "file": "../resources/textures/skyLv2.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 29,
+            "file": "../resources/textures/skyLv3.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 30,
+            "file": "../resources/textures/background3.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 31,
+            "file": "../resources/textures/touch_point_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 32,
+            "file": "../resources/textures/touch_move_05.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 33,
+            "file": "../resources/textures/none.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 34,
+            "file": "../resources/textures/skyLv4.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+		{ 
+	    "id": 99,
+            "file": "../resources/textures/tran.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+		{ 
+        "id": 100,
+            "file": "../resources/textures/tran1.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 123,
+            "file": "../resources/textures/backgroundLV2.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 124,
+            "file": "../resources/textures/backgroundLV4.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        {
+            "id": 125,
+            "file": "../resources/textures/backgroundLV3.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        { 
+        "id": 101,
+            "file": "../resources/textures/bounce.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        },
+        { 
+        "id": 102,
+            "file": "../resources/textures/button_level.tga",
+            "wrap": "repeat",
+            "min": "linear_linear",
+            "mag": "linear"
+        }]
+    },
+    "shaders":
+    {
+        "data": [
+        {
+            "id": 0,
+            "vs": "../resources/shaders/object.vs",
+            "fs": "../resources/shaders/object.fs",
+            "culling": 1,
+            "depth_test": 1
+        },
+        {
+            "id": 1,
+            "vs": "../resources/shaders/text.vs",
+            "fs": "../resources/shaders/text.fs",
+            "culling": 1,
+            "depth_test": 1
+        }]
+    }
+}

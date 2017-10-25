@@ -1,0 +1,71 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 0,
+            "moveable" : false,
+            "name" : "Start",
+            "position" : [ 211, 443 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 1,
+            "moveable" : false,
+            "name" : "Options",
+            "position" : [ 523, 395 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 2,
+            "moveable" : false,
+            "name" : "Exit",
+            "position" : [ 610, 497 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1, 1, 1, 0.0 ],
+            "id" : 3,
+            "moveable" : false,
+            "name" : "Start",
+            "position" : [ 554, 443 ],
+            "pxSize" : -1.219792821437193e-012,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1, 1, 0.0, 0.0 ],
+            "id" : 4,
+            "moveable" : false,
+            "name" : "Start",
+            "position" : [ 369, 338 ],
+            "pxSize" : -1.219792821437193e-012,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         }
+      ]
+   }
+}

@@ -1,0 +1,34 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "value" : "Replay",
+            "id" : 0,
+            "moveable" : false,
+            "name" : "Replay",
+            "position" : [ 300, 210 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "value" : "button",
+            "id" : 1,
+            "moveable" : false,
+            "name" : "Next Level",
+            "position" : [ 530, 210 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 1.0, 1.0 ],
+            "type" : "button"
+         }
+      ]
+   }
+}

@@ -1,0 +1,62 @@
+{
+   "objects" : {
+      "data" : [
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "value" : "Play",
+            "id" : 0,
+            "moveable" : false,
+            "name" : "Play",
+            "position" : [ 197, 481 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 3,
+            "value" : "Continue",
+            "moveable" : false,
+            "name" : "Continue",
+            "position" : [ 339, 380 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "value" : "Options",
+            "id" : 1,
+            "moveable" : false,
+            "name" : "Options",
+            "position" : [ 450, 275 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         },
+         {
+            "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+            "id" : 2,
+            "moveable" : false,
+            "value" : "Exit",
+            "name" : "Exit",
+            "position" : [ 590, 169 ],
+            "pxSize" : 48.0,
+            "rotation" : [ 0 ],
+            "scale" : [ 1.0, 1.0 ],
+            "texture" : [ 99 ],
+            "tile" : [ 0.0, 0.0 ],
+            "type" : "button"
+         }
+      ]
+   }
+}
