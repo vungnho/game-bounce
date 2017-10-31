@@ -2,12 +2,16 @@
 
 #include "stdafx.h"
 //#include <Utilities/MemoryOperators.h>
-#include "../Game/Globals.h"
-#include <conio.h>
+#include "../../Game/Globals.h"
+#include <stdlib.h>
 //Using SDL and standard IO
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengles2.h>
 #undef main
+
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
 extern int  GameInit();
 extern void GameDraw();
@@ -33,6 +37,7 @@ bool initGL()
 {
     bool success = true;
     GLenum error = GL_NO_ERROR;
+
 
 
     //Check for error
@@ -69,12 +74,13 @@ void AppInit()
     else
     {
         //SDL_Surface* surface = SDL_GetWindowSurface(sdl_Window);
+
         //Create context
         SDL_GLContext gContext = SDL_GL_CreateContext(sdl_Window);
         int success = false;
         if( gContext == NULL )
         {
-            printf( "OpenGL context could not be created! SDL Error: %s\n", SDL_GetError() );
+            printf( "gContext == NULL ! SDL Error: %s\n", SDL_GetError() );
             success = false;
         }
         else
@@ -106,6 +112,12 @@ int main(int argc, const char * argv[])
         return 0;
     }
 
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetSwapInterval(0);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
     AppInit();
 
 
@@ -132,7 +144,7 @@ int main(int argc, const char * argv[])
     //identifying memory leaks
     //MemoryDump();
     printf("Press any key...\n");
-    _getch();
+    //_getch();
 
     return 0;
 

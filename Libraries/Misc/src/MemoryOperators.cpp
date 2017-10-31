@@ -1,4 +1,6 @@
 
+#ifdef _WIN32
+
 #include "MemoryManager.h"
 
 //new section
@@ -74,3 +76,5 @@ void SanityCheck()
 {
 	MemoryManager::GetInstance()->SanityCheck(true);
 }
+
+#endif

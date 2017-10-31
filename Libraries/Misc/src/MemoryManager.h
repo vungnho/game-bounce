@@ -1,5 +1,7 @@
-#pragma once
 
+#pragma once
+#ifdef _WIN32
+#include <stddef.h>
 const int MAX_ALLOC = 99999;
 
 struct AllocBuffers
@@ -30,6 +32,7 @@ public:
 	void Error(char * szMessage);
 };
 
+#endif
 
 
 

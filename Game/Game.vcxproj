@@ -100,8 +100,6 @@
     <ClCompile Include="MvpMatrix.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectType.cpp" />
-    <ClCompile Include="object_Bounce.cpp" />
-    <ClCompile Include="object_Box.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

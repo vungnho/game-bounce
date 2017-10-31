@@ -1,5 +1,5 @@
 
-#ifdef WIN32
+#ifdef _WIN32
 
 #include "MemoryManager.h"
 #include <stdlib.h>

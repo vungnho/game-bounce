@@ -87,12 +87,6 @@
     <ClCompile Include="ObjectType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="object_Bounce.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="object_Box.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
