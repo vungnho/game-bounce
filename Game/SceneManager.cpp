@@ -229,7 +229,7 @@ void SceneManager::Draw()
 
 	/* END DRAW */
 #ifdef WIN32
-	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
+	//eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
 #endif
 
 }

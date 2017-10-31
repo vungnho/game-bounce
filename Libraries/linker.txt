@@ -1,0 +1,2 @@
+../Libraries/glew/$(Configuration)/glew.lib
+../Libraries/glfw/$(Configuration)/glfw.lib

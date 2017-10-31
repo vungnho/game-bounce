@@ -50,7 +50,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>G:\__public__\_downloads\3D to 2D project 15032016\Bounce Project %28Renew%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Include/;../../Libraries/SDL2/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -64,7 +64,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>G:\__public__\_downloads\3D to 2D project 15032016\Bounce Project %28Renew%29\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Include/;../../Libraries/SDL2/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -76,16 +76,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\esShader.cpp" />
-    <ClCompile Include="src\esUtil.cpp" />
-    <ClCompile Include="src\esUtil_win.cpp" />
     <ClCompile Include="src\MemoryManager.cpp" />
     <ClCompile Include="src\MemoryOperators.cpp" />
     <ClCompile Include="src\MyMath.cpp" />
     <ClCompile Include="src\TGA.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\esUtil.h" />
-    <ClInclude Include="src\esUtil_win.h" />
     <ClInclude Include="src\MemoryManager.h" />
     <ClInclude Include="src\MemoryOperators.h" />
     <ClInclude Include="src\MyMath.h" />

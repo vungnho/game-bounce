@@ -41,11 +41,6 @@ public:
 
 	Object* selectedObject;
 
-	//b2Vec2** b2vertexList;
-	//int b2vertexCount;
-#ifdef WIN32
-	ESContext *esContext;
-#endif
 
 	Vector2 lastMousePos;
 	Vector2 lastMouseDown;

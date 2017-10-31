@@ -3,7 +3,7 @@
 #include "MvpMatrix.h"
 #include <math.h>
 #include "Globals.h"
-#include <Utilities/esUtil.h>
+#include <SDL2/SDL_opengles2.h>
 
 Camera::Camera(void):  moveSpeed(200.0), rotateSpeed(2.0), velMovingY(1), velMovingX(1), velRotatingV(0), velRotatingH(0)
 {

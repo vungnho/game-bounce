@@ -1,6 +1,7 @@
 
 #include "Shader.h"
 #include "Console.h"
+#include <Utilities/esShader.h>
 
 Shader::Shader()
 {

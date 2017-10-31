@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "App_Win32", "App_Win32.vcxproj", "{3FF2F228-8160-4D82-AAB9-687805986198}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freetype", "..\Libraries\FreeType2\prj\vs2013\freetype.vcxproj", "{10DFAC0D-B4D6-3F4B-950A-6F5619DF9E21}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FreeType2", "..\Libraries\FreeType2\prj\vs2013\freetype.vcxproj", "{10DFAC0D-B4D6-3F4B-950A-6F5619DF9E21}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Misc", "..\Libraries\Misc\Misc.vcxproj", "{4BA6B5E6-90D3-465B-96CE-137FAF7156F0}"
 EndProject
