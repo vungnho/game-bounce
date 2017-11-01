@@ -32,7 +32,7 @@ void TextManager::Init()
 		Console::log("Could not init freetype library\n");
 		return;
 	}
-	const char* s = String::concat( BOUNCE_DATA_LOCATION, "../resources/Fonts/angrybirds-regular.ttf");
+	const char* s = String::concat( BOUNCE_DATA_LOCATION, "Fonts/angrybirds-regular.ttf");
 	if(FT_New_Face(m_ft, s, 0, & m_face))
 	//if(FT_New_Face(m_ft, "../Resources/Fonts/Snacker.ttf", 0, &m_face))
 	{

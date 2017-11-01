@@ -218,7 +218,6 @@ void SceneManager::Draw()
 	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
 	/* WHILE DRAW */
 
 
@@ -229,6 +228,7 @@ void SceneManager::Draw()
 
 	/* END DRAW */
 #ifdef WIN32
+     
 	//eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
 #endif
 

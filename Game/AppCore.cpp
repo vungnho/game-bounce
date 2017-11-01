@@ -27,7 +27,7 @@ int GameInit()
 {
     
 	Console::log("----------------------\n\n");
-	glClearColor ( 1, 1, 1, 0 ); //RGBA
+	glClearColor ( 0, 0, 1, 0.5 ); //RGBA
     glViewport(0, 0, WIDTH, HEIGHT);
 
 	KeyManager::CreateInstance();

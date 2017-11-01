@@ -1,6 +1,6 @@
 #include <exception>
 #include <functional>
-
+#include <SDL2/SDL_test_common.h>
 #ifdef __EMSCRIPTEN__
 
 #include <emscripten.h>
@@ -16,6 +16,7 @@
 #include <SDL2/SDL_opengles2.h>
 
 #endif
+#undef main
 
 // Shader sources
 const char* vertexSource =

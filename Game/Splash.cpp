@@ -24,7 +24,7 @@ Splash::Splash():isTouched(false)
 		this->objects[i]->Bind();
 	}
 
-	Console::log("Text Width: %d \n", TextManager::GetInstance()->GetStringWidth("Giappi", 50));
+	//Console::log("Text Width: %d \n", TextManager::GetInstance()->GetStringWidth("Giappi", 50));
 }
 
 Splash::~Splash(void)

@@ -58,7 +58,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/FreeType2/$(Configuration)/FreeType2.lib;../Libraries/SDL2/lib/x86/SDL2.lib;../Libraries/bin/libGLESv2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>../Game/$(Configuration)/Game.lib;../Libraries/Misc/$(Configuration)/Misc.lib;../Libraries/Box2D/$(Configuration)/Box2D.lib;../Libraries/JSON/$(Configuration)/JSON.lib;../Libraries/FreeType2/$(Configuration)/FreeType2.lib;../Libraries/SDL2/lib/x86/SDL2.lib;../Libraries/bin/libGLESv2.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,15 +78,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application_win.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="src\com\giappi\Debug.h" />
+    <ClInclude Include="src\com\giappi\KeyEventListener.h" />
+    <ClInclude Include="src\com\giappi\MouseEventListener.h" />
+    <ClInclude Include="src\game\EventListenerCenter.h" />
+    <ClInclude Include="src\game\Singleton.h" />
     <ClInclude Include="src\resource.h" />
     <ClInclude Include="src\settings.h" />
     <ClInclude Include="src\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\Bounce.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application_win.cpp" />
+    <ClCompile Include="src\com\giappi\Debug.cpp" />
+    <ClCompile Include="src\com\giappi\KeyEventListener.cpp" />
+    <ClCompile Include="src\com\giappi\MouseEventListener.cpp" />
+    <ClCompile Include="src\game\EventListenerCenter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
