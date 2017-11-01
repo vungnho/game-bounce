@@ -1,29 +1,9 @@
-#include "StdAfx.h"
-#include "Handler.h"
-#include "SceneManager.h"
-#include "ResourceManager.h"
-#include "Shape.h"
+#include "Globals.h"
 
-Handler::Handler(void)
-{
-	this->model = ResourceManager::GetInstance()->GetModelById(7);
-	this->shader = ResourceManager::GetInstance()->GetShaderById(0);
-	this->shapeType = Shape::POLYGON;
-
-}
-
-Handler::~Handler(void)
-{
-}
-
-
-Matrix Handler::GetMVPMatrix()
-{
-	return 	this->GetSRTMatrix()*
-		SceneManager::GetInstance()->GetCamera()->GetProjectMatrix();
-}
-
-void Handler::hightlight(bool yes)
-{
-
-}
+#ifdef WIN32
+	int Globals::screenWidth = 800;
+	int Globals::screenHeight = 480;
+#else
+	int Globals::screenWidth = 800;
+	int Globals::screenHeight = 480;
+#endif //OS_ANDROID

@@ -1,333 +1,170 @@
 #include "StdAfx.h"
-#include "Object.h"
-#include "Memory.h"
-#include "SceneManager.h"
-#include "ObjectType.h"
-#include  <cstdlib>
-#include "Geometry.h"
-#include "Shape.h"
-#include "String.h"
-#include "myDefines.h"
-#include "ResourceManager.h"
-#include "Console.h"
-#include "Globals.h"
+#include "MvpMatrix.h"
 
-Object::Object():tiling(Vector2(1,1))
+MvpMatrix::MvpMatrix(void)
 {
-	shapeType = Shape::POLYGON;
-	this->moveable = false;
-	this->SetUserData(NULL);
-	this->vboId = -1;
-	this->iboId = -1;
-}
-void Object::SetShapeType(const char * shape_Type)
-{
-	if(String::IsEquals(shape_Type, "circle"))
-	{
-		shapeType = Shape::CIRCLE;
-		return;
-	}
-	if(String::IsEquals(shape_Type, "rect"))
-	{
-		shapeType = Shape::RECT;
-		return;
-	}
-	if(String::IsEquals(shape_Type, "triagle"))
-	{
-		shapeType = Shape::TRIANGLE;
-		return;
-	}
-	if(String::IsEquals(shape_Type, "polygon"))
-	{
-		shapeType = Shape::POLYGON;
-		return;
-	}
-}
+	M = Matrix();
+	M.SetIdentity();
 
-char* Object::GetShapeType()
-{
-	if(shapeType == Shape::CIRCLE)
-	{
-		return "circle";
-	}
-	if(shapeType = Shape::RECT)
-	{
-		
-		return "rect";
-	}
-	if(shapeType = Shape::TRIANGLE)
-	{
-		
-		return "triagle";
-	}
-	if(shapeType = Shape::POLYGON)
-	{
-		
-		return "polygon";
-	}
-}
+	R = Matrix();
+	R.SetZero();
+	T = Matrix();
+	T.SetZero();
+	S = Matrix();
+	S.SetIdentity();
 
+	this->SetRotate(0, 0, 0);
+	this->SetScale(1, 1, 1);
+	this->SetTranslate(0, 0, 0);
 
-
-
-Object::Object(Model* m, Texture** t, Shader* s):tiling(Vector2(1,1))
-{
-	this->model = m;
-	this->texture = t;
-	this->shader = s;
-	this->mass = 1.0;
-	this->velocity = Vector2(0, 0);
-	this->userData = NULL;
-	this->moveable = true;
-	this->numContact = 0;
-	this->SetUserData(NULL);
-	this->vboId = -1;
-	this->iboId = -1;
-}
-void Object::scaleSelf()
-{
-	float scaleX = (float)Globals::screenWidth/800;
-	float scaleY = (float)Globals::screenHeight/600;
-	float scale = scaleX>scaleY ? scaleY : scaleX;
-	scaleX = scaleX > scale ? (scaleX + 1)/2 : scaleX;
-	scaleY = scaleY > scale ? (scaleY + 1)/2 : scaleY;
-
-	this->position = Vector2(position.x*scaleX, position.y*scaleY);
-	this->scale *= scale;
-}
-
-Object::~Object(void)
-{
-	Memory::Delete(this->texture);
-	glDeleteBuffers(1, &(vboId));
-
-	glDeleteBuffers(1, &(iboId));
-
-}
-void Object::swapTexture()
-{
-	if(textureCount < 2) return;
-	Texture *t0 = texture[0];
-	for(GLuint i=0; i<textureCount-1; i++)texture[i]=texture[i+1];
-	texture[textureCount-1]=t0;
-}
-void Object::setTexture(GLuint id)
-{
-	if(textureCount<3 || id>textureCount-1 || id<1) return;
-	texture[0] = texture[id];
-}
-void Object::Buffer()
-{
-	glBindBuffer(GL_ARRAY_BUFFER, this->vboId);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->iboId);
-}
-
-void Object::Bind()
-{
-	//buffer object
-	glGenBuffers(1, &(vboId));
-	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	glBufferData(GL_ARRAY_BUFFER, model->GetVertexSize(), model->GetVertexPointer(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-
-
-	//int indicesData[] = {0, 1, 2};
-	//buffer object
-	glGenBuffers(1, &(iboId));
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboId);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model->GetIndiceSize(), model->GetIndicePointer(), GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-}
-
-void Object::UnBuffer()
-{
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-}
-
-void Object::SetName(const char* name)
-{
-	strcpy(this->name, name);
-}
-
-void Object::Draw()
-{
-
-	glUseProgram(this->shader->program);
-	this -> Buffer();
-	
-	// Enable Vertex if able
-	if(this->shader->positionAttribute != -1)
-	{
-		glEnableVertexAttribArray(this->shader->positionAttribute);
-		glVertexAttribPointer(this->shader->positionAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), VERTEX_POS);
-	}
-	// Enable Texture if able
-	if(this->shader->textureAttribute != -1)
-	{
-		glEnableVertexAttribArray(this->shader->textureAttribute);
-		glVertexAttribPointer(this->shader->textureAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*) 0 + VERTEX_UV);
-		
-	}
-
-	//Set mvp matrix
-	this->shader->SetUniform("u_mvp", this->GetMVPMatrix());
-
-	//Set matrix world
-	this->shader->SetUniform("u_world", this->srt.GetSRTMatrix());
-
-	//Set camera position
-	this->shader->SetUniform("u_EyePos", SceneManager::GetInstance()->GetCamera()->position);
-	/*
-	//Set Fog Value
-	this->shader->SetUniform("u_fogStart", SceneManager::GetInstance()->fog.fogStart);
-	this->shader->SetUniform("u_fogRange", SceneManager::GetInstance()->fog.fogRange);
-	this->shader->SetUniform("u_fogColor", SceneManager::GetInstance()->fog.fogColor);
-	*/
-	//set tiling value
-	this->shader->SetUniform("u_tile", this->tiling);
-
-	//binding texture
-	for(int j = 0; j < textureCount; j++)
-	{
-		if(this->shader->uftLoc[j] != -1)
-		{
-			//Activation Texture
-			glActiveTexture(GL_TEXTURE0 + j);
-
-			this ->texture[j] ->Bind();
-			//glUniform1i(this->shader->uftLoc[j], j);
-		}
-	}
-
-
-	//glDrawArrays( GL_TRIANGLES, 0, 3);
-
-
-	glDrawElements(GL_TRIANGLES, this-> model->numIndice , GL_UNSIGNED_INT, (const void*)0);
-
-	//glDrawArrays(GL_TRIANGLES, 0, this-> model->numVertex);
-	//unbinding texture
-	glBindTexture(GL_TEXTURE_2D, 0);
-	this-> UnBuffer();
 
 }
 
-void Object::Update(float delta_time)
+MvpMatrix::MvpMatrix(Matrix m)
+{
+	this->M = m;
+}
+
+MvpMatrix::~MvpMatrix(void)
+{
+}
+
+
+void MvpMatrix::SetRotate(float thx, float thy, float thz)
+{
+	//Rotate Matrix
+	Matrix Rx = Matrix(); Rx.SetRotationX(thx);
+	Matrix Ry = Matrix(); Ry.SetRotationY(thy);
+	Matrix Rz = Matrix(); Rz.SetRotationZ(thz);
+
+	this->R = Rz*Rx*Ry;
+}
+
+void MvpMatrix::SetTranslate(float dx, float dy, float dz)
+{
+	this->T.SetTranslation(dx, dy, dz);
+}
+
+void MvpMatrix::SetScale(float dx, float dy, float dz)
+{
+	this->S.SetScale(dx, dy, dz);
+}
+
+Matrix MvpMatrix::GetSRTMatrix()
+{
+	return this->S * this->R * this->T;
+}
+
+MvpMatrix &MvpMatrix::Rotate(float thx, float thy, float thz)
+{
+	MvpMatrix r1 = MvpMatrix();
+	r1.SetRotate(thx, thy, thz);
+	this->R = this->R * r1.R;
+
+	this->M = this->M * this->R;
+	return *this;
+}
+
+Vector3 MvpMatrix::GetRotation()
+{
+	Vector4 v4 =  Vector4(0, 0, 0, 1) * this->R;
+	return Vector3(v4.x, v4.y, v4.z);
+}
+
+MvpMatrix &MvpMatrix::Translate(float dx, float dy, float dz)
 {
 
-	if(this->numContact)
-	{
-	}
+	MvpMatrix t1 = MvpMatrix();
+	t1.SetTranslate(dx, dy, dz);
+	this->T = this->T * t1.T;
+
+	this->M = this->M * this->T;
+	return *this;
+}
+
+MvpMatrix &MvpMatrix::Scale(float dx, float dy, float dz)
+{
+
+	MvpMatrix s1 = MvpMatrix();
+	s1.SetScale(dx, dy, dz);
+	this->S = this->S * s1.S;
+
+	this->M = this->M *  this->S;
+	return *this;
+}
+
+MvpMatrix &MvpMatrix::Scale(float dd)
+{
+	return this->Scale(dd, dd, dd);
 }
 
 
 
-Vector2 Object::TransformByView(Vector2 point)
+MvpMatrix &MvpMatrix::Reset()
 {
-	Vector4 a4(point.x, point.y, 0, 1);
-	Vector4 b4 = a4 * this->GetSRTMatrix();
-	return Vector2(b4.x, b4.y);
+	M.SetIdentity();
+	SetRotate(0, 0, 0);
+	SetTranslate(0, 0, 0);
+	SetScale(0, 0, 0);
+	return *this;
 }
 
-
-bool Object::IsInside(Vector2 point)
+Matrix MvpMatrix::GetProjectMatrix()
 {
-	int inside = 0;
-	for(int i = 0; i < model->numIndice;)
-	{
-		
-			inside |= Geometry::PointInTriangle(point,
-				TransformByView(model->vertexes[model->indices[i++]].Position),
-				TransformByView(model->vertexes[model->indices[i++]].Position),
-				TransformByView(model->vertexes[model->indices[i++]].Position));
-		
-
-	}
-	return inside;
+	return Matrix().SetPerspective(1.0, 2.0, 0.1, 500);
 }
 
-
-Matrix Object::GetSRTMatrix()
+Matrix MvpMatrix::CreateMatrix(Vector4 row1, Vector4 row2, Vector4 row3, Vector4 row4)
 {
-	//return srt.GetSRTMatrix();
-	return Matrix().SetScale(this->scale.x, this->scale.y, 1) * Matrix().SetRotationZ(this->angle) * Matrix().SetTranslation(this->position.x, this->position.y, 0);
+	Matrix mat = Matrix();
+	mat.m[0][0] = row1[0];
+	mat.m[0][1] = row1[1];
+	mat.m[0][2] = row1[2];
+	mat.m[0][3] = row1[3];
+	mat.m[1][0] = row2[0];
+	mat.m[1][1] = row2[1];
+	mat.m[1][2] = row2[2];
+	mat.m[1][3] = row2[3];
+	mat.m[2][0] = row3[0];
+	mat.m[2][1] = row3[1];
+	mat.m[2][2] = row3[2];
+	mat.m[2][3] = row3[3];
+	mat.m[3][0] = row4[0];
+	mat.m[3][1] = row4[1];
+	mat.m[3][2] = row4[2];
+	mat.m[3][3] = row4[3];
+	return mat;
 }
 
-
-Matrix Object::GetMVPMatrix()
+/**
+* camera_pos: vị trí của camera
+* target_pos: vị trí của mục tiêu mà camera muốn ngắm đến
+* up: góc quay quanh trục của camera
+*/
+/*
+Matrix MvpMatrix::lookAt(Vector3 camera_pos, Vector3 target_pos, Vector3 up)
 {
-	return 	this->mvp = this->GetSRTMatrix()*
-		SceneManager::GetInstance()->GetCamera()->GetViewMatrix()*
-		SceneManager::GetInstance()->GetCamera()->GetProjectMatrix();
-}
 
-float Object::GetWidth()
-{
-	int min = this->model->vertexes[0].Position.x;// * this->scale.x;
-	int max = min;
-	for(int i = 1; i < this->model->numVertex; i++)
-	{
-		int x = this->model->vertexes[i].Position.x;// * this->scale.x;
-		min = x < min ? x : min;
-		max = x > max ? x : max;
-	}
-	return (max - min);
-}
+	Vector3 cameraDirection = (camera_pos - target_pos).Normalize();
+	Vector3 cameraRight =  up.Cross(cameraDirection).Normalize();
+	Vector3 cameraUp = cameraDirection.Cross(cameraRight);
 
-float Object::GetHeight()
-{
-	int min = this->model->vertexes[0].Position.y;// * this->scale.y;
-	int max = min;
-	for(int i = 1; i < this->model->numVertex; i++)
-	{
-		int x = this->model->vertexes[i].Position.y;// * this->scale.y;
-		min = x < min ? x : min;
-		max = x > max ? x : max;
-	}
-	return (max - min);
-}
+	Matrix m = MvpMatrix::CreateMatrix
+	(
+		Vector4(cameraRight.x, cameraUp.x, cameraDirection.x, 0), 
+		Vector4(cameraRight.y, cameraUp.y, cameraDirection.y, 0),
+		Vector4(cameraRight.z, cameraUp.z, cameraDirection.z, 0),
+		Vector4(0, 0, 0, 1)
+	);
 
-void Object::SetUserData(void *data)
-{
-	this->userData = data;
-}
+	Matrix t = MvpMatrix::CreateMatrix
+	(
+		Vector4(1, 0, 0,  0), 
+		Vector4(0, 1, 0,  0),
+		Vector4(0, 0, 1,  0),
+		Vector4(-camera_pos.x, -camera_pos.y, -camera_pos.z, 1)
+	);
+	return m*t;
 
-void* Object::GetUserData()
-{
-	return this->userData;
 }
-
-
-void Object::SetAngle(float rad)
-{
-	rad = fmod(rad,2*PI);
-	angle = rad;
-	srt.SetRotate(0, 0, rad);
-}
-
-void Object::SetAngleDeg(float deg)
-{
-	SetAngle(DEG_2_RAG(deg));
-}
-float Object::GetAngleDeg()
-{
-	return RAG_2_DEG(angle);
-}
-float Object::GetAngle()
-{
-	return angle;
-}
-
-
-void Object::ContactWith(Object* o2)
-{
-	//Console::log("%s contact with %s.\n", this->name, o2->name);
-	SceneManager::GetInstance()->ContactProcess(this, o2);
-}
-
-int Object::GetType()
-{
-	return ObjectType::GetType(this->type);
-}
+*/

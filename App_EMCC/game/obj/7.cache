@@ -1,21 +1,21 @@
 #include "StdAfx.h"
-#include "StateManager.h"
+#include "Sprite.h"
+#include "Model.h"
 
-StateManager * StateManager::ms_pInstance = NULL;
-
-StateManager::StateManager():m_state(STATE_PAUSE){}
-StateManager::~StateManager(){}
-
-void StateManager::Init()
+Sprite::Sprite():m_Width(0), m_Height(0){}
+Sprite::Sprite(Texture** t, int c,Shader* s)
 {
-	m_state = STATE_LOAD;
+	this->texture = t;
+	this->textureCount = c;
+	this->shader = s;
+	this->mass = 1.0;
+
 }
 
-void StateManager::SetCurrentState(typeStates newState)
+
+//float Sprite::GetWidth(){return m_Width;}
+//float Sprite::GetHeight(){return m_Height;}
+Sprite::~Sprite()
 {
-	m_state = newState;
-}
-typeStates StateManager::GetCurrentState()
-{
-	return m_state;
+	delete model;
 }

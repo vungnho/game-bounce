@@ -80,11 +80,11 @@ var remove = function(value, arr)
 };
 
 //setup for compile
-var sources = scandir("test").filter(file => file.match(/\.cpp$/));
+var sources = scandir("../App_Win32/src").filter(file => file.match(/\.cpp$/));
 
 var includes = "-I ../Libraries/SDL2/include -I ../Include";
 var libraries = " lib/libSDL2.bc lib/libGame.bc lib/libBox2D.bc lib/libFreeType2.bc lib/libJSON.bc lib/libMisc.bc ";
-var flags = "-O3 -g -std=c++11";
+var flags = "-O1 -g -std=c++11";
 var cc = "em++";
 if(OS.platform() == "win32")
 {
@@ -92,8 +92,8 @@ if(OS.platform() == "win32")
 }
 var programName = "-o bin/Bounce.html";
 var link = "em++";
-var link_flags = "-O3";
-var link_options = "-s ALLOW_MEMORY_GROWTH=1 -s ASM_JS=1 --use-preload-plugins --preload-file ../Resources@/Resources ";
+var link_flags = "-O1";
+var link_options = "-s ALLOW_MEMORY_GROWTH=1 -s ASM_JS=1 -s WASM=0 -s ASSERTIONS=2 -s DEMANGLE_SUPPORT=1 --use-preload-plugins --preload-file ../Resources@/Resources ";
 
 echo ("\n");
 echo ("-- Compiling --\n\n", fg.cyan);

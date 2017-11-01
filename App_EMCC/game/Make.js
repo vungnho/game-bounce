@@ -90,9 +90,9 @@ if(OS.platform() == "win32")
 {
     cc = "em++.bat";
 }
-var programName = "-o Game.bc";
+var programName = "-o libGame.bc";
 var link = "em++";
-var link_flags = "-O1";
+var link_flags = " -g ";
 var link_options = " ";
 
 echo ("\n");

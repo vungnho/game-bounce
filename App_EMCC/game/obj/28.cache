@@ -1,9 +1,10 @@
-#include "Globals.h"
+#include "StdAfx.h"
+#include "Geometry.h"
 
-#ifdef WIN32
-	int Globals::screenWidth = 800;
-	int Globals::screenHeight = 480;
-#else
-	int Globals::screenWidth = 800;
-	int Globals::screenHeight = 480;
-#endif //OS_ANDROID
+Geometry::Geometry(void)
+{
+}
+
+Geometry::~Geometry(void)
+{
+}

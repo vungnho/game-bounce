@@ -1,106 +1,213 @@
 #include "StdAfx.h"
-#include "LevelMenu.h"
-#include "TextManager.h"
-#include "SceneManager.h"
-#include "LevelMenu.h"
-#include "Memory.h"
-#include "String.h"
-#include "Game.h"
-#include "MapEditor.h"
-#include "ResourceManager.h"
 #include "KeyManager.h"
-#include "Memory.h"
-#include "ObjectType.h"
-#include "Globals.h"
 
-LevelMenu::LevelMenu(): Scene()
-{
+KeyManager * KeyManager::ms_pInstance = NULL;
+int KeyManager::s_keyPressed = S_KEY_NONE;
 
+KeyManager::KeyManager(){}
+KeyManager::~KeyManager(){}
 
-	//SceneManager::GetInstance()->sceneGame->level = 2;
-	//SceneManager::GetInstance()->sceneGame->Initialaze();
-	//SceneManager::GetInstance()->currentScene = SceneManager::GetInstance()->sceneGame;
-
-
-	const char* s = String::concat(BOUNCE_DATA_LOCATION, "Data/LevelMenu.json");
-	this->levelMenu = SceneManager::ReadMapFromJSON(s);
-	delete[] s;
-	for(int i = 0; i < this->levelMenu.size(); i++)
-	{
-		this->levelMenu[i]->scaleSelf();
-		this->levelMenu[i]->Bind();
-	}
-
-
-}
-
-LevelMenu::~LevelMenu(void)
-{
-	while(levelMenu.size() > 0)
-	{
-		delete levelMenu.back();
-		levelMenu.pop_back();
-	}
-}
-
-
-//Mouse Events
-void LevelMenu::OnTourchDown(int x, int y)
-{
-};
-void LevelMenu::OnTourchUp(int x,int y)
-{
-
-	for(int i = 0; i < levelMenu.size(); i++)
-	{
-		if(levelMenu[i]->IsInside(Vector2(x, y)))
-		{
-			if(levelMenu[i]->GetType()==ObjectType::LEVELGAME)
-			{
-				int val = atoi(((Button*) this->levelMenu[i])->value);
-				//Console::log("Selected level %d \n",val);
-
-				SceneManager::GetInstance()->sceneGame->level = val;
-				SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneLoading);
-				//SceneManager::GetInstance()->sceneGame->Initialaze();
-				//SceneManager::GetInstance()->currentScene = SceneManager::GetInstance()->sceneGame;
-			}
-			else if(levelMenu[i]->GetType()==ObjectType::HANDLER)
-			{
-				SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneMenu);
-			}
-		}
-	}
-
-};
-void LevelMenu::OnTourchMove(int x, int y)
-{
-};
-
-//Key Events
-void LevelMenu::OnKeyDown(unsigned char keyChar)
+void KeyManager::Init()
 {
 
 }
-void LevelMenu::OnKeyUp(unsigned char keyChar)
+void KeyManager::SetKeyPress(const int keyCode)
 {
-
-	if(keyChar == KeyManager::S_CHAR_E)
+	s_keyPressed |= keyCode;
+}
+void KeyManager::SetKeyPress(const unsigned char keyChar)
+{
+	//esLogMessage("%c is press.\n", keyChar);
+	switch (keyChar)
 	{
-		SceneManager::GetInstance()->ChangeScene(new MapEditor());
-		return;
+	case S_CHAR_UP:
+		SetKeyPress(S_KEY_UP);
+		//esLogMessage("Key Arrow Up.\n");
+		break;
+
+	case S_CHAR_DOWN:
+		SetKeyPress(S_KEY_DOWN);
+		//esLogMessage("Key Arrow Down.\n");
+		break;
+
+	case S_CHAR_LEFT:
+		SetKeyPress(S_KEY_LEFT);
+		//esLogMessage("Key Left.\n");
+		break;
+
+	case S_CHAR_RIGHT:
+		SetKeyPress(S_KEY_RIGHT);
+		//esLogMessage("Right Left.\n");
+		break;
+
+	case S_CHAR_1:
+		SetKeyPress(S_KEY_1);
+		break;
+
+	case S_CHAR_2:
+		SetKeyPress(S_KEY_2);
+		break;
+
+	case S_CHAR_3:
+		SetKeyPress(S_KEY_3);
+		break;
+	case S_CHAR_ESC:
+		SetKeyPress(S_KEY_ESC);
+		break;
+	case S_CHAR_P:
+		SetKeyPress(S_KEY_P);
+		break;
+	case S_CHAR_CTRL:
+		SetKeyPress(S_KEY_CTRL);
+		break;
+	case S_CHAR_S:
+		SetKeyPress(S_KEY_S);
+		break;
+	case S_CHAR_L:
+		SetKeyPress(S_KEY_L);
+		break;
+	case S_CHAR_A:
+		SetKeyPress(S_KEY_A);
+		break;
+	case S_CHAR_D:
+		SetKeyPress(S_KEY_D);
+		break;
+	case S_CHAR_W:
+		SetKeyPress(S_KEY_W);
+		break;
+	case S_CHAR_E:
+		SetKeyPress(S_KEY_E);
+		break;
+	case S_CHAR_F:
+		SetKeyPress(S_KEY_F);
+		break;
+	case S_CHAR_R:
+		SetKeyPress(S_KEY_R);
+		break;
+	case S_CHAR_Q:
+		SetKeyPress(S_KEY_Q);
+		break;
+	default:
+		SetKeyPress(S_KEY_OTHER);
+		break;
 	}
-};
-
-
-void LevelMenu::Draw()
+}
+bool KeyManager::IsKeyPressed(const int keyCode)
 {
-	for(int i = 0; i < this->levelMenu.size(); i++)
+	return s_keyPressed & keyCode;
+}
+bool KeyManager::IsAnyKeyPressed()
+{
+	return s_keyPressed;
+}
+bool KeyManager::IsKeyUpPressed()
+{
+	return IsKeyPressed(S_KEY_UP);
+}
+bool KeyManager::IsKeyDownPressed()
+{
+	return IsKeyPressed(S_KEY_DOWN);
+}
+bool KeyManager::IsKeyLeftPressed()
+{
+	return IsKeyPressed(S_KEY_LEFT);
+}
+bool KeyManager::IsKeyRightPressed()
+{
+	return IsKeyPressed(S_KEY_RIGHT);
+}
+bool KeyManager::UnAllKeyPress()
+{
+	if(s_keyPressed != S_KEY_NONE)
 	{
-		this->levelMenu[i]->Draw();
+		s_keyPressed = S_KEY_NONE;
+		return true;
 	}
-};
-void LevelMenu::Update(float delta_time)
+	return false;
+}
+bool KeyManager::UnKeyPress(const int keyCode)
 {
-};
+	if(s_keyPressed & keyCode)
+	{
+		s_keyPressed ^= keyCode;
+		return true;
+	}
+	return false;
+}
+bool KeyManager::UnKeyPress(const unsigned char keyChar)
+{
+	//esLogMessage("%c [%d] is unpressed.\n", keyChar, keyChar);
+	switch (keyChar)
+	{
+	case S_CHAR_UP:
+		return UnKeyPress(S_KEY_UP);
+		//esLogMessage("Key Arrow Up.\n");
+		break;
 
+	case S_CHAR_DOWN:
+		return UnKeyPress(S_KEY_DOWN);
+		//esLogMessage("Key Arrow Down.\n");
+		break;
+
+	case S_CHAR_LEFT:
+		return UnKeyPress(S_KEY_LEFT);
+		//esLogMessage("Key Left.\n");
+		break;
+
+	case S_CHAR_RIGHT:
+		return UnKeyPress(S_KEY_RIGHT);
+		//esLogMessage("Right Left.\n");
+		break;
+
+	case S_CHAR_1:
+		return UnKeyPress(S_KEY_1);
+		break;
+
+	case S_CHAR_2:
+		return UnKeyPress(S_KEY_2);
+		break;
+
+	case S_CHAR_3:
+		return UnKeyPress(S_KEY_3);
+		break;
+	case S_CHAR_ESC:
+		return UnKeyPress(S_KEY_ESC);
+		break;
+	case S_CHAR_P:
+		return UnKeyPress(S_KEY_P);
+		break;
+	case S_CHAR_CTRL:
+		return UnKeyPress(S_KEY_CTRL);
+		break;
+	case S_CHAR_S:
+		return UnKeyPress(S_KEY_S);
+		break;
+	case S_CHAR_L:
+		return UnKeyPress(S_KEY_L);
+		break;
+	case S_CHAR_A:
+		return UnKeyPress(S_KEY_A);
+		break;
+	case S_CHAR_D:
+		return UnKeyPress(S_KEY_D);
+		break;
+	case S_CHAR_W:
+		return UnKeyPress(S_KEY_W);
+		break;
+	case S_CHAR_E:
+		return UnKeyPress(S_KEY_E);
+		break;
+	case S_CHAR_F:
+		return UnKeyPress(S_KEY_F);
+		break;
+	case S_CHAR_R:
+		return UnKeyPress(S_KEY_R);
+		break;
+	case S_CHAR_Q:
+		return UnKeyPress(S_KEY_Q);
+		break;
+	default:
+		return UnKeyPress(S_KEY_OTHER);
+		break;
+	}
+}

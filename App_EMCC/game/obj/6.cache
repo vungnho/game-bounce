@@ -1,8 +1,21 @@
-// stdafx.cpp : source file that includes just the standard includes
-// NewTrainingFramework.pch will be the pre-compiled header
-// stdafx.obj will contain the pre-compiled type information
+#include "StdAfx.h"
+#include "StateManager.h"
 
-#include "stdafx.h"
+StateManager * StateManager::ms_pInstance = NULL;
 
-// TODO: reference any additional headers you need in STDAFX.H
-// and not in this file
+StateManager::StateManager():m_state(STATE_PAUSE){}
+StateManager::~StateManager(){}
+
+void StateManager::Init()
+{
+	m_state = STATE_LOAD;
+}
+
+void StateManager::SetCurrentState(typeStates newState)
+{
+	m_state = newState;
+}
+typeStates StateManager::GetCurrentState()
+{
+	return m_state;
+}

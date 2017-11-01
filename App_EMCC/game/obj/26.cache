@@ -1,37 +1,29 @@
-
-#include "JSON.h"
 #include "StdAfx.h"
+#include "Handler.h"
+#include "SceneManager.h"
+#include "ResourceManager.h"
+#include "Shape.h"
 
-std::string file_get_contents( const char *path )
+Handler::Handler(void)
 {
-   FILE *file = fopen( path, "rb" );
-   if ( !file )
-	  return std::string("");
-   fseek( file, 0, SEEK_END );
-   long size = ftell( file );
-   fseek( file, 0, SEEK_SET );
-   std::string text;
-   char *buffer = new char[size+1];
-   buffer[size] = 0;
-   if ( fread( buffer, 1, size, file ) == (unsigned long)size )
-	  text = buffer;
-   fclose( file );
-   delete[] buffer;
-   return text;
+	this->model = ResourceManager::GetInstance()->GetModelById(7);
+	this->shader = ResourceManager::GetInstance()->GetShaderById(0);
+	this->shapeType = Shape::POLYGON;
+
 }
 
-Json::Value JSONparse(std::string json)
+Handler::~Handler(void)
 {
-	Json::Reader reader;
-	Json::Value value;
-    bool parsingSuccessful = reader.parse( json, value );
+}
 
-   if ( !parsingSuccessful )
-   {
-	  printf( "Failed to parse file: \n%s\n", 
-			  reader.getFormatedErrorMessages().c_str() );
-	  getchar();
-   }
 
-	return value;
+Matrix Handler::GetMVPMatrix()
+{
+	return 	this->GetSRTMatrix()*
+		SceneManager::GetInstance()->GetCamera()->GetProjectMatrix();
+}
+
+void Handler::hightlight(bool yes)
+{
+
 }
