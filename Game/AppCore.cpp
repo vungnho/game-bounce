@@ -1,4 +1,3 @@
-#include <stdlib.h>
 
 #include "../Game/ResourceManager.h"
 #include "../Game/SceneManager.h"
@@ -6,7 +5,6 @@
 #include "../Game/TextManager.h"
 #include "../Game/StateManager.h"
 #include "../Game/Globals.h"
-#include "definations.h"
 #include "../Game/Console.h"
 
 #ifdef OS_ANDROID
@@ -21,14 +19,13 @@ int Invert(int y, int height)
 	return (height - y);
 }
 
-int WIDTH = 500, HEIGHT = 500;
 
 int GameInit()
 {
     
-	Console::log("----------------------\n\n");
-	glClearColor ( 0, 0, 1, 0.5 ); //RGBA
-    glViewport(0, 0, WIDTH, HEIGHT);
+	Console::log("--------- INIT -----------\n");
+	glClearColor ( 0, 0, 0, 0.5 ); //RGBA
+    glViewport(0, 0, Globals::screenWidth, Globals::screenHeight);
 
 	KeyManager::CreateInstance();
 	KeyManager::GetInstance()->Init();
@@ -45,6 +42,7 @@ int GameInit()
 
 	StateManager::CreateInstance();
 	StateManager::GetInstance()->Init();
+    Console::log("--------- INIT DONE ----------\n\n");
     
     return 0;
 }

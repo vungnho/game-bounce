@@ -1,5 +1,5 @@
 {
-    "Models":
+    "models":
     {
         "data": [
         {
@@ -51,7 +51,7 @@
             "data": [ 0, 0, 200, 50, 200, 50 ]
         }]
     },
-    "Textures":
+    "textures":
     {
         "data": [
         {

@@ -200,7 +200,6 @@ void SceneManager::Init()
 	this->sceneSetting = NULL;
 
 	this->ChangeScene(this->sceneSplash);
-	//this->currentScene = new Scene();
 
 }
 
@@ -211,9 +210,9 @@ void SceneManager::Draw()
 {
 
 	/* BEFRORE DRAW*/
-	//glEnable(GL_DEPTH_TEST);
-	// Enable blending alpha
+	//glEnable(GL_DEPTH_TEST); // remove it if get wrong render
 
+	// Enable blending alpha
 	 glEnable(GL_BLEND);
 	 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -357,4 +356,5 @@ void SceneManager::ChangeScene(Scene* scene)
 {
 	this->currentScene = scene;
 	this->currentScene->OnSizeChange();
+    Console::log("-- Scene changed.\n");
 }

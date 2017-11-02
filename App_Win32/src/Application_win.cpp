@@ -1,4 +1,5 @@
 #include <SDL2/SDL_test_common.h>
+#define SDL_VIDEO_OPENGL_ES2 1 
 
 #include "stdafx.h"
 //#include <Utilities/MemoryOperators.h>

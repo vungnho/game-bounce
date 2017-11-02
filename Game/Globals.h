@@ -10,7 +10,11 @@ public:
 };
 
 #ifdef WIN32
-	#define BOUNCE_DATA_LOCATION  "G:\\__public__\\_downloads\\3D to 2D project 15032016\\Bounce Project (Renew)\\Resources\\"
+#if _DEBUG
+	#define BOUNCE_DATA_LOCATION  "../../Resources/"
+#else
+#define BOUNCE_DATA_LOCATION  "Resources/"
+#endif
 #else
 	#define BOUNCE_DATA_LOCATION  "/sdcard/bounce/resources/"
 #endif //OS_ANDROID

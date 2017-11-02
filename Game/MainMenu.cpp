@@ -70,8 +70,10 @@ void MainMenu::OnTourchUp(int x,int y)
 			}
 			else if(String::IsEquals(menu[i]->name, "Options"))
 			{
-				if(SceneManager::GetInstance()->sceneSetting)
-					SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneSetting);
+                if (SceneManager::GetInstance()->sceneSetting)
+                {
+                    SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneSetting);
+                }
 			}
 			else if(String::IsEquals(menu[i]->name, "Continue"))
 			{

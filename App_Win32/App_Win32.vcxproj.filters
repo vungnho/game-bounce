@@ -24,12 +24,6 @@
     <ClInclude Include="src\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\EventListenerCenter.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\Singleton.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\com\giappi\Debug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,6 +33,18 @@
     <ClInclude Include="src\com\giappi\MouseEventListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="egl\resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="egl\settings.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="egl\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="egl\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\Bounce.rc">
@@ -46,19 +52,13 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application_win.cpp">
+    <ClCompile Include="egl\Application_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\EventListenerCenter.cpp">
+    <ClCompile Include="egl\esUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\com\giappi\Debug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\com\giappi\KeyEventListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\com\giappi\MouseEventListener.cpp">
+    <ClCompile Include="egl\esUtil_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

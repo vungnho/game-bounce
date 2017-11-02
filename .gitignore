@@ -1,6 +1,8 @@
 Debug
 Release
+obj
 *.sdf
+*.opensdf
 *.suo
 *.pdb
 *.tlog

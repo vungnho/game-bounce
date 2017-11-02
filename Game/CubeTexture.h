@@ -1,5 +1,5 @@
 #pragma once
-#include <Utilities/utilities.h>
+
 #include "Texture.h"
 class CubeTexture: Texture
 {

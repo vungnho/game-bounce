@@ -18,13 +18,17 @@ GLuint ESUTIL_API esLoadShader ( GLenum type, const char * filename )
 	// Create the shader object
 	shader = glCreateShader ( type );
 
-	if ( shader == 0 )
-	return 0;
+    if (shader == 0)
+    {
+        return 0;
+    }
 
 	// Load the shader source
 	FILE * pf = fopen(filename, "rb" );
-	if (! pf )
-		return NULL;
+    if (!pf)
+    {
+        return NULL;
+    }
 	fseek(pf, 0, SEEK_END);
 	long size = ftell(pf);
 	fseek(pf, 0, SEEK_SET);
