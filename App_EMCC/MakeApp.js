@@ -81,7 +81,7 @@ var remove = function(value, arr)
 
 //setup for compile
 // ../App_Win32/src
-var sources = scandir("../App_Win32/src").filter(file => file.match(/\.cpp$/));
+var sources = scandir("../App_Win32/egl").filter(file => file.match(/\.cpp$/));
 
 var includes = "-I ../Libraries/SDL2/include -I ../Include";
 var libraries = " lib/libSDL2.bc lib/libGame.bc lib/libBox2D.bc lib/libFreeType2.bc lib/libJSON.bc lib/libMisc.bc ";

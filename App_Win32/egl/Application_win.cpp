@@ -1,10 +1,7 @@
 
-
-#include "stdafx.h"
 #include <Utilities/esUtil.h>
-#include <conio.h>
 #include "../../Game/Globals.h"
-
+#include <iostream>
 
 extern int  GameInit();
 extern void GameDraw();
@@ -63,7 +60,7 @@ void TouchActionMove(ESContext *esContext, int x, int y)
 	OnTouchEvent(TOUCH_ACTION_MOVE, x, y, 0);
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, const char * argv[])
 {
 	ESContext esContext;
 
@@ -93,7 +90,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//identifying memory leaks
 	//MemoryDump();
 	//Console::log("Press any key...\n");
-	_getch();
+
+    std::cin.get();
 
 	return 0;
 }

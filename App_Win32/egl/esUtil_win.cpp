@@ -1,3 +1,5 @@
+
+#if _WIN32
 #include "stdafx.h"
 #include <windows.h>
 #include <Utilities/esUtil.h>
@@ -183,3 +185,5 @@ void WinLoop ( ESContext *esContext )
          esContext->updateFunc ( esContext, deltaTime );
    }
 }
+
+#endif _WIN32
