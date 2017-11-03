@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "..\Libraries\glew\g
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfw", "..\Libraries\glfw\glfw.vcxproj", "{8E13A642-AE14-4AAD-B555-42B8B5AB4845}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JSON", "..\Libraries\JSON\JSON.vcxproj", "{94C035B3-60E2-4566-8AA7-58D5BA69D773}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -69,6 +71,12 @@ Global
 		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|Win32.ActiveCfg = Release|Win32
 		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|Win32.Build.0 = Release|Win32
 		{8E13A642-AE14-4AAD-B555-42B8B5AB4845}.Release|x64.ActiveCfg = Release|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Debug|Win32.ActiveCfg = Debug|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Debug|Win32.Build.0 = Debug|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Debug|x64.ActiveCfg = Debug|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Release|Win32.ActiveCfg = Release|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Release|Win32.Build.0 = Release|Win32
+		{94C035B3-60E2-4566-8AA7-58D5BA69D773}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
