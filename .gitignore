@@ -8,3 +8,9 @@ obj
 *.tlog
 *.log
 *.obj
+*.ipch
+*.user
+*.db
+*.db-shm
+*.db-wal
+*.opendb
