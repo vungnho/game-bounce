@@ -34,15 +34,15 @@ public:
 	Model* GetModelById(int id);
 	Texture* GetTextureById(int id);
 	Shader* GetShaderById(int id);
-
-public:
 	static void CreateInstance()
     {
-        if ( ms_pInstance == NULL )
-		   ms_pInstance = new ResourceManager();
+        ms_pInstance = new ResourceManager();
     }
+
+public:
 	static ResourceManager * GetInstance() 
     {
+        if (!ms_pInstance) CreateInstance();
 		return ms_pInstance;
     }
 	static void DestroyInstance() 

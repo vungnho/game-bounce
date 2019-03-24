@@ -26,16 +26,16 @@ public:
 private:
 	TextManager();
 	~TextManager();
-
-public:
 	static void CreateInstance()
 	{
-		if ( ms_pInstance == NULL )
-			ms_pInstance = new TextManager();
+		ms_pInstance = new TextManager();
 	}
+
+public:
 
 	static TextManager * GetInstance() 
 	{
+        if (!ms_pInstance) CreateInstance();
 		return ms_pInstance;
 	}
 

@@ -74,7 +74,7 @@ std::vector<Object*> SceneManager::ReadMapFromJSON(const char* file_name)
 	}
 	else
 	{
-		//Console::log("Load file %s successfully.\n", file_name);
+		Console::log("Load file %s successfully.\n", file_name);
 	}
 	fclose(file);
 

@@ -27,20 +27,14 @@ int GameInit()
 	glClearColor ( 0, 0, 0, 0.5 ); //RGBA
     glViewport(0, 0, Globals::screenWidth, Globals::screenHeight);
 
-	KeyManager::CreateInstance();
 	KeyManager::GetInstance()->Init();
 
-	ResourceManager::CreateInstance();
 	ResourceManager::GetInstance()->Init();
 
-	TextManager::CreateInstance();
 	TextManager::GetInstance()->Init();
 
-	SceneManager::CreateInstance();
 	SceneManager::GetInstance()->Init();
 
-
-	StateManager::CreateInstance();
 	StateManager::GetInstance()->Init();
     Console::log("--------- INIT DONE ----------\n\n");
     

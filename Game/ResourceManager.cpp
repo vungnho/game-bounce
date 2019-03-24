@@ -35,7 +35,7 @@ void ResourceManager::LoadResource()
 	}
 	else
 	{
-		//Console::log("Load file %s successfully.\n", file_name);
+		Console::log("Load file %s successfully.\n", file_name);
 	}
 	fclose(file);
 	

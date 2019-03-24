@@ -11,21 +11,19 @@ public:
 	void BeginContact(b2Contact* contact);
 	void EndContact(b2Contact* contact);
 
+	static void CreateInstance()
+    {
+        ms_pInstance = new ContactListener();
+    }
 
 
 public:
 	/*implicit methods exist for the copy constructor and operator= and we want to forbid calling them.*/
 	ContactListener(const ContactListener &){};
 	ContactListener& operator =(const ContactListener &){};
-	static void CreateInstance()
-    {
-        if ( ms_pInstance == NULL )
-		   ms_pInstance = new ContactListener();
-    }
 	static ContactListener * GetInstance() 
     {
-		if(!ms_pInstance)
-			ContactListener::CreateInstance();
+		if(!ms_pInstance) CreateInstance();
 		return ms_pInstance;
     }
 	static void DestroyInstance() 

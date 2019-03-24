@@ -80,17 +80,17 @@ public:
 private:
 	KeyManager();
 	~KeyManager();
-
-public:
 	static void CreateInstance()
 	{
-		if ( ms_pInstance == NULL )
-			ms_pInstance = new KeyManager();
+		ms_pInstance = new KeyManager();
 	}
+
+public:
 
 	static KeyManager * GetInstance() 
 	{
-		return ms_pInstance;
+        if (!ms_pInstance) CreateInstance();
+        return ms_pInstance;
 	}
 
 	static void DestroyInstance() 

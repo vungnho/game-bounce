@@ -19,7 +19,6 @@ TextManager * TextManager::ms_pInstance = NULL;
 
 TextManager::TextManager()
 {
-	Init();
 }
 TextManager::~TextManager()
 {
@@ -41,7 +40,7 @@ void TextManager::Init()
 	}
 	else
 	{
-		//Console::log("Load font Snacker.ttf ok!\n");
+		Console::log("Load font Snacker.ttf ok!\n");
 	}
 
 	delete[] s;

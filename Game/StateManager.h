@@ -14,16 +14,16 @@ public:
 private:
 	StateManager();
 	~StateManager();
-
-public:
 	static void CreateInstance()
 	{
-		if ( ms_pInstance == NULL )
-			ms_pInstance = new StateManager();
+		ms_pInstance = new StateManager();
 	}
+
+public:
 
 	static StateManager * GetInstance() 
 	{
+        if (!ms_pInstance) CreateInstance();
 		return ms_pInstance;
 	}
 
