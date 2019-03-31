@@ -10,6 +10,7 @@ public:
 
 	std::vector<Object*> objects;
 	Object* selectedObject;
+    int selectedId;
 	char fileName[255];
 	Object* clipple;
 

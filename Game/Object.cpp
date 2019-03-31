@@ -86,8 +86,8 @@ Object::Object(Model* m, Texture** t, Shader* s):tiling(Vector2(1,1))
 }
 void Object::scaleSelf()
 {
-	float scaleX = (float)Globals::screenWidth/800;
-	float scaleY = (float)Globals::screenHeight/600;
+	float scaleX = (float)Globals::screenWidth/ Globals::screenWidthRatio;
+	float scaleY = (float)Globals::screenHeight/ Globals::screenHeightRatio;
 	float scale = scaleX>scaleY ? scaleY : scaleX;
 	scaleX = scaleX > scale ? (scaleX + 1)/2 : scaleX;
 	scaleY = scaleY > scale ? (scaleY + 1)/2 : scaleY;
@@ -108,10 +108,10 @@ void Object::swapTexture()
 {
 	if(textureCount < 2) return;
 	Texture *t0 = texture[0];
-	for(GLuint i=0; i<textureCount-1; i++)texture[i]=texture[i+1];
+	for(GLint i=0; i<textureCount-1; i++)texture[i]=texture[i+1];
 	texture[textureCount-1]=t0;
 }
-void Object::setTexture(GLuint id)
+void Object::setTexture(GLint id)
 {
 	if(textureCount<3 || id>textureCount-1 || id<1) return;
 	texture[0] = texture[id];
@@ -234,7 +234,7 @@ Vector2 Object::TransformByView(Vector2 point)
 
 bool Object::IsInside(Vector2 point)
 {
-	int inside = 0;
+	bool inside = false;
 	for(int i = 0; i < model->numIndice;)
 	{
 		
@@ -265,11 +265,11 @@ Matrix Object::GetMVPMatrix()
 
 float Object::GetWidth()
 {
-	int min = this->model->vertexes[0].Position.x;// * this->scale.x;
-	int max = min;
+	float min = this->model->vertexes[0].Position.x;// * this->scale.x;
+    float max = min;
 	for(int i = 1; i < this->model->numVertex; i++)
 	{
-		int x = this->model->vertexes[i].Position.x;// * this->scale.x;
+        float x = this->model->vertexes[i].Position.x;// * this->scale.x;
 		min = x < min ? x : min;
 		max = x > max ? x : max;
 	}
@@ -278,11 +278,11 @@ float Object::GetWidth()
 
 float Object::GetHeight()
 {
-	int min = this->model->vertexes[0].Position.y;// * this->scale.y;
-	int max = min;
+	float min = this->model->vertexes[0].Position.y;// * this->scale.y;
+    float max = min;
 	for(int i = 1; i < this->model->numVertex; i++)
 	{
-		int x = this->model->vertexes[i].Position.y;// * this->scale.y;
+        float x = this->model->vertexes[i].Position.y;// * this->scale.y;
 		min = x < min ? x : min;
 		max = x > max ? x : max;
 	}

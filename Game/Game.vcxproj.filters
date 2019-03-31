@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{11a9837c-2de4-410c-8478-d2e57095e678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Models">
+      <UniqueIdentifier>{95238b3e-f67d-4479-8c40-d2d6fef1b9da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Data">
+      <UniqueIdentifier>{12e95394-3885-4ebf-bbf4-acf899e3b1bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{b0877a84-2730-4831-9333-00bd8d2d9892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{5dcc6974-68aa-446f-9009-e58f9660d8e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bounce.cpp">
@@ -275,5 +290,214 @@
     <ClInclude Include="Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\Fonts\angrybirds-regular.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\Candice.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\DroidSans.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\segoeui.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\segoeuil.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\Snacker.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+    <Font Include="..\Resources\Fonts\waltograph42.ttf">
+      <Filter>Resource Files\Fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Models\Circle_r100.json">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\Resources\Models\Ground.json">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\Resources\Models\hexagon.json">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\Resources\Models\Square.json">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\Resources\Models\Triangle.json">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\Resources\Data\EndGame.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Handler.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Level0.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Level1.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Level2.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Level3.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\LevelMenu.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Menu.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Menu1.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\RM.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Score.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\SM.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Data\Splash.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Object.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Object.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Text.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\Text.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Resources\Data\Score.txt">
+      <Filter>Resource Files\Data</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Textures\arr_02.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\arr_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\arr2_02.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\arr2_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\background.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\background2.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\background3.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\backgroundLV1.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\backgroundLV2.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\backgroundLv3.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\backgroundLV4.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\bounce.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\box.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\brick.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\brok.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\button_level.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\candy.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\cloud.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\door.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\gai.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\gai2.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\gr.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\none.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\o.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\o.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\pause_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\play_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\reload_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\sky.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\skyLv2.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\skyLv3.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\skyLv4.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\touch_move_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\touch_point_05.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\tran.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Resources\Textures\tran1.tga">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

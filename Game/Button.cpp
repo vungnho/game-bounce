@@ -32,13 +32,11 @@ void Button::Draw()
 	//Loi o Handle::Draw()
 	Handler::Draw();
 	Vector4 t = Vector4(this->position.x, this->position.y, 0, 1) * this->GetMVPMatrix();
-	int x = position.x;
-	int y = position.y;
 	TextManager::GetInstance()->RenderString(
 		this->name,
 		color,
-		x - (TextManager::GetInstance()->GetStringWidth(this->name, this->pixel_Size))/4,
-		y - GetHeight()/6,
+        position.x - (TextManager::GetInstance()->GetStringWidth(this->name, (int) this->pixel_Size))/4,
+        position.y - GetHeight()/6,
 		pixel_Size);
 
 }
@@ -59,13 +57,13 @@ void Button::SetName(const char *name)
 }
 void Button::scaleSelf()
 {
-	float scaleX = (float)Globals::screenWidth/800;
-	float scaleY = (float)Globals::screenHeight/600;
+	float scaleX = (float)Globals::screenWidth/ Globals::screenWidthRatio;
+	float scaleY = (float)Globals::screenHeight/ Globals::screenHeightRatio;
 	float scale = scaleX>scaleY ? scaleY : scaleX;
 	scaleX = scaleX > scale ? (scaleX + 1)/2 : scaleX;
 	scaleY = scaleY > scale ? (scaleY + 1)/2 : scaleY;
 
 	this->position = Vector2(position.x*scaleX, position.y*scaleY);
 	this->scale *= scale;
-	this->pixel_Size *= scale;
+	this->pixel_Size = (unsigned int) (pixel_Size * scale);
 }

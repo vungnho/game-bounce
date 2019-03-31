@@ -51,7 +51,7 @@ public:
 	virtual void SetName(const char* name);
 
 	void swapTexture();
-	void setTexture(GLuint id);
+	void setTexture(GLint id);
 	void Buffer();
 	void Bind();
 	void UnBuffer();

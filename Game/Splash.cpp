@@ -19,9 +19,9 @@ Splash::Splash():isTouched(false)
 	const char* s = String::concat(BOUNCE_DATA_LOCATION, "Data/Splash.json");
 	this->objects= SceneManager::ReadMapFromJSON(s);
 	delete[] s;
-	for(int i = 0; i < this->objects.size(); i++)
+    for (auto &object : objects)
 	{
-		this->objects[i]->Bind();
+        object->Bind();
 	}
 
 	//Console::log("Text Width: %d \n", TextManager::GetInstance()->GetStringWidth("Giappi", 50));
@@ -57,10 +57,9 @@ void Splash::OnKeyUp(unsigned char keyChar)
 
 void Splash::Draw()
 {
-
-	for(int i = 0; i < this->objects.size(); i++)
+    for (auto &object : objects)
 	{
-		this->objects[i]->Draw();
+        object->Draw();
 	}
 	//TextManager::GetInstance()->RenderString("Bounce",Vector4(0.6, 0.6, 0.6, 0.9),130,300,380);
 	//TextManager::GetInstance()->RenderString("Tourch any where...",Vector4(0.5,0.5,0.5,0.8),320,150,48);

@@ -111,7 +111,7 @@ MvpMatrix &MvpMatrix::Reset()
 
 Matrix MvpMatrix::GetProjectMatrix()
 {
-	return Matrix().SetPerspective(1.0, 2.0, 0.1, 500);
+	return Matrix().SetPerspective(1.0f, 2.0f, 0.1f, 500);
 }
 
 Matrix MvpMatrix::CreateMatrix(Vector4 row1, Vector4 row2, Vector4 row3, Vector4 row4)

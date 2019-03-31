@@ -57,7 +57,7 @@ void Model::Load(const char *fileName)
 
 	int num_vertex = 0;
 	int num_indice = 0;
-	char lineHeader[512];
+	//char lineHeader[512];
 	FILE * file;
 	file = fopen (fileName, "r");
 	if(file == NULL)
@@ -94,9 +94,9 @@ void Model::Load(const char *fileName)
 	data = o_indices["data"];
 	for(int i = 0; i < num_indice; i+=3)
 	{
-		indices[i] = data[(i+1)/3][l_a].asDouble();
-		indices[i + 1] = data[(i+1)/3][l_a+1].asDouble();
-		indices[i + 2] = data[(i+1)/3][l_a+2].asDouble();
+		indices[i] = (int) data[(i+1)/3][l_a].asDouble();
+		indices[i + 1] = (int) data[(i+1)/3][l_a+1].asDouble();
+		indices[i + 2] = (int) data[(i+1)/3][l_a+2].asDouble();
 
 	}
 

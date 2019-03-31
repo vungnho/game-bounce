@@ -8,7 +8,7 @@ class Vector2
 public:
 	//Constructors
 	Vector2() : x(0.0f), y(0.0f){}
-	Vector2(GLfloat _x, GLfloat _y) : x(_x), y(_y) {}
+    Vector2(GLfloat _x, GLfloat _y) : x(_x), y(_y) {}
 	Vector2(GLfloat * pArg) : x(pArg[0]), y(pArg[1]) {}
 	Vector2(Vector2 const & vector) : x(vector.x), y(vector.y) {}
 
@@ -34,6 +34,18 @@ public:
 	//data members
 	GLfloat x;
 	GLfloat y;
+
+    Vector2(int _x, int _y)
+    {
+        x = (GLfloat)_x;
+        y = (GLfloat)_y;
+    }
+
+    Vector2(double _x, double _y)
+    {
+        x = (GLfloat)_x;
+        y = (GLfloat)_y;
+    }
 };
 
 //Vector3

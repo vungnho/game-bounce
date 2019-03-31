@@ -34,6 +34,6 @@ void Loading::Update(float dt)
 
 void Loading::Draw()
 {
-	TextManager::GetInstance()->RenderString("Loading...",Vector4(0.7, 0.7, 0.7, 0.8), 300, 300, 100);
+	TextManager::GetInstance()->RenderString("Loading...",Vector4(0.7f, 0.7f, 0.7f, 0.8f), 300, 300, 100);
 
 }

@@ -66,7 +66,7 @@ int main(int argc, const char * argv[])
 
     esInitContext ( &esContext );
 
-	esCreateWindow ( &esContext, "3D Trainning", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
+	esCreateWindow ( &esContext, "Game Bounce", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
 
 	if ( Init ( &esContext ) != 0 )
 		return 0;

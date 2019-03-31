@@ -130,12 +130,12 @@ std::vector<Object*> SceneManager::ReadMapFromJSON(const char* file_name)
 				Button *b = new Button();
 				int cl;
 				float cr, cg, cb, ca;
-				cr = item["color"][cl = 0].asDouble();
-				cg = item["color"][cl = 1].asDouble();
-				cb = item["color"][cl = 2].asDouble();
-				ca = item["color"][cl = 3].asDouble();
+				cr = (float) item["color"][cl = 0].asDouble();
+				cg = (float) item["color"][cl = 1].asDouble();
+				cb = (float) item["color"][cl = 2].asDouble();
+				ca = (float) item["color"][cl = 3].asDouble();
 				b->color = Vector4(cr, cg, cb, ca);
-				b->pixel_Size = item["pxSize"].asDouble();
+				b->pixel_Size = (unsigned int) item["pxSize"].asDouble();
 				strcpy(b->value, item["value"].asCString());
 				r_object[i] = b;
 				break;
@@ -170,13 +170,13 @@ std::vector<Object*> SceneManager::ReadMapFromJSON(const char* file_name)
 		//Model View
 		float px, py, rz, sx, sy, tx, ty;
 		int k;
-		px = item["position"][k = 0].asDouble();
-		py = item["position"][k = 1].asDouble();
-		rz = item["rotation"][k = 0].asDouble();
-		sx = item["scale"][k = 0].asDouble();
-		sy = item["scale"][k = 1].asDouble();
-		tx = item["tile"][k = 0].asDouble();
-		ty = item["tile"][k = 1].asDouble();
+		px = (float) item["position"][k = 0].asDouble();
+		py = (float) item["position"][k = 1].asDouble();
+		rz = (float) item["rotation"][k = 0].asDouble();
+		sx = (float) item["scale"][k = 0].asDouble();
+		sy = (float) item["scale"][k = 1].asDouble();
+		tx = (float) item["tile"][k = 0].asDouble();
+		ty = (float) item["tile"][k = 1].asDouble();
 
 		float scaleValue = 1;
 		r_object[i]->position = Vector2(px*(scaleValue+1)/2, py*(scaleValue+1)/2);
@@ -237,8 +237,7 @@ void SceneManager::Draw()
 void SceneManager::OnTourchDown(int x, int y)
 {
 	this->currentScene->OnTourchDown(x, y);
-	lastMousePos.x = lastMouseDown.x = x;
-	lastMousePos.y = lastMouseDown.y = y;
+    lastMousePos = lastMouseDown = Vector2(x, y);
 	tourchTime = 0;
 
 	//Console::log("SceneManager::OnTourchDown(%d, %d); \n", x, y);
@@ -250,15 +249,13 @@ void SceneManager::OnTourchMove(int x, int y)
 
 	this->currentScene->OnTourchMove(x, y);
 
-	int dx = x - lastMousePos.x;
-	int dy = y - lastMousePos.y;
+    Vector2 newMousePos = Vector2(x - lastMousePos.x, y - lastMousePos.y);
 
 	if(StateManager::GetInstance()->GetCurrentState() == STATE_MAP_EDITOR)
 	{
 		if(this->selectedObject != NULL)
 		{
-			selectedObject->position.x += dx;
-			selectedObject->position.y += dy;
+			selectedObject->position += newMousePos;
 			void * object = selectedObject->GetUserData();
 			if(object)
 			{
@@ -268,16 +265,12 @@ void SceneManager::OnTourchMove(int x, int y)
 		}
 	}
 
-
-	lastMousePos.x = x;
-	lastMousePos.y = y;
+	lastMousePos = Vector2(x, y);
 }
 
 void SceneManager::OnTourchUp(int x, int y)
 {
 	this->currentScene->OnTourchUp(x, y);
-	int dx = x - lastMouseDown.x;
-	int dy = y - lastMouseDown.y;
 
 	//Reset
 	this->tourchTime = 0;

@@ -16,10 +16,10 @@ public:
 	GLuint m_textureId, m_vboId;
 
 	void Init();
-	void RenderString(const char *text, Vector4 color, float x, float y, float pixel_Size=48);
-	void RenderNumber(const int number, Vector4 color, float x, float y, float pixel_Size=48);
+	void RenderString(const char *text, Vector4 color, float x, float y, unsigned int pixel_Size=48);
+	void RenderNumber(const int number, Vector4 color, float x, float y, unsigned int pixel_Size=48);
 	int GetStringWidth(char* text, int size);
-	int GetStringHeight(char* text, int size);
+    unsigned int GetStringHeight(char* text, unsigned int size);
 	
 
 #pragma region "Singleton"

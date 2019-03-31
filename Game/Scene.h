@@ -8,7 +8,7 @@
 #include "Score.h"
 #include "Button.h"
 #include <Utilities/MyMath.h> // if you use STL, please include this line AFTER all other include
-#define CDTIME_KEY_PRESS 0.01
+#define CDTIME_KEY_PRESS 0.01f
 class Scene
 {
 

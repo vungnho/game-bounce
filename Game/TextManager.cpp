@@ -31,7 +31,8 @@ void TextManager::Init()
 		Console::log("Could not init freetype library\n");
 		return;
 	}
-	const char* s = String::concat( BOUNCE_DATA_LOCATION, "Fonts/angrybirds-regular.ttf");
+    //const char* s = String::concat(BOUNCE_DATA_LOCATION, "Fonts/Snacker.ttf");
+    const char* s = String::concat(BOUNCE_DATA_LOCATION, "Fonts/angrybirds-regular.ttf");
 	if(FT_New_Face(m_ft, s, 0, & m_face))
 	//if(FT_New_Face(m_ft, "../Resources/Fonts/Snacker.ttf", 0, &m_face))
 	{
@@ -66,7 +67,7 @@ void TextManager::Init()
 }
 	
 void TextManager::RenderString(const char *text, Vector4 color, float x, float y,
-							   float pixel_Size)
+    unsigned int pixel_Size)
 {
 	FT_Set_Pixel_Sizes(m_face, 0, pixel_Size);
 	// use glProgram, bind texture & pass color uniform here
@@ -138,7 +139,7 @@ void TextManager::RenderString(const char *text, Vector4 color, float x, float y
 }
 
 void TextManager::RenderNumber(const int number, Vector4 color, float x, float y,
-							   float pixel_Size)
+    unsigned int pixel_Size)
 {
 	char *text = new char[25];
 	sprintf ( text, "%d", number );
@@ -216,9 +217,7 @@ int TextManager::GetStringWidth(char *text, int size)
 {
 	FT_Set_Pixel_Sizes(m_face, 0, size);
 
-	float width = 0, height = 0;
-
-	float last_x = 0, last_w = 0;
+	int last_x = 0, last_w = 0;
 	for(const char *p = text; *p; p++)
 	{
 		if(FT_Load_Char(m_face, *p, FT_LOAD_RENDER))
@@ -231,11 +230,11 @@ int TextManager::GetStringWidth(char *text, int size)
 	}
 	return last_x;
 }
-int TextManager::GetStringHeight(char *text, int size)
+unsigned int TextManager::GetStringHeight(char *text, unsigned int size)
 {
 	FT_Set_Pixel_Sizes(m_face, 0, size);
 
-	int width = 0, height = 0;
+    unsigned int width = 0, height = 0;
 
 	float sx = 1.0f / Globals::screenWidth;
 	float sy = 1.0f / Globals::screenHeight;

@@ -18,9 +18,9 @@ MainMenu::MainMenu(): Scene()
 	const char* s = String::concat(BOUNCE_DATA_LOCATION, "Data/Menu.json");
 	this->menu = SceneManager::ReadMapFromJSON(s);
 	delete[] s;
-	for(int i = 0; i < this->menu.size(); i++)
+    for (auto &mn : menu)
 	{
-		this->menu[i]->Bind();
+        mn->Bind();
 	}
 	ResetMenu();
 
@@ -28,10 +28,11 @@ MainMenu::MainMenu(): Scene()
 
 void MainMenu::ResetMenu()
 {
-	for(int i = 0; i < this->menu.size(); i++)
+    int menuSize = this->menu.size();
+	for(int i = 0; i < menuSize; i++)
 	{
-		this->menu[i]->position.x = Globals::screenWidth/2;
-		this->menu[i]->position.y = Globals::screenHeight/ (menu.size() + 1) * (this->menu.size()-i);
+		this->menu[i]->position.x = (GLfloat) Globals::screenWidth/2;
+		this->menu[i]->position.y = (GLfloat) Globals::screenHeight/ (menuSize + 1) * (menuSize -i);
 	}
 }
 
@@ -56,33 +57,33 @@ void MainMenu::OnTourchDown(int x, int y)
 };
 void MainMenu::OnTourchUp(int x,int y)
 {
-
-	for(int i = 0; i < menu.size(); i++)
+    for (auto &mn : menu)
 	{
-		if(menu[i]->IsInside(Vector2(x, y)))
+		if(mn->IsInside(Vector2(x, y)))
 		{
-			if(String::IsEquals(menu[i]->name, "Play"))
+            SceneManager *sceneManager = SceneManager::GetInstance();
+			if(String::IsEquals(mn->name, "Play"))
 			{
-				if(SceneManager::GetInstance()->sceneLevelMenu)
+				if(sceneManager->sceneLevelMenu)
 				{
-					SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneLevelMenu);
+                    sceneManager->ChangeScene(sceneManager->sceneLevelMenu);
 				}
 			}
-			else if(String::IsEquals(menu[i]->name, "Options"))
+			else if(String::IsEquals(mn->name, "Options"))
 			{
-                if (SceneManager::GetInstance()->sceneSetting)
+                if (sceneManager->sceneSetting)
                 {
-                    SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneSetting);
+                    sceneManager->ChangeScene(sceneManager->sceneSetting);
                 }
 			}
-			else if(String::IsEquals(menu[i]->name, "Continue"))
+			else if(String::IsEquals(mn->name, "Continue"))
 			{
-				if(SceneManager::GetInstance()->sceneGame->bounce)
+				if(sceneManager->sceneGame->bounce)
 				{
-					SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneGame);
+                    sceneManager->ChangeScene(sceneManager->sceneGame);
 				}
 			}
-			else if(String::IsEquals(menu[i]->name, "Exit"))
+			else if(String::IsEquals(mn->name, "Exit"))
 			{
 				exit(0);
 			}
@@ -113,9 +114,9 @@ void MainMenu::OnKeyUp(unsigned char keyChar)
 void MainMenu::Draw()
 {
 	//LOGI(">>>> Screen: %d, %d \n", Globals::screenWidth, Globals::screenHeight);
-	for(int i = 0; i < this->menu.size(); i++)
+    for (auto &mn : menu)
 	{
-		this->menu[i]->Draw();
+        mn->Draw();
 	}
 };
 void MainMenu::Update(float delta_time)

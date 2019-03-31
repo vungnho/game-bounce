@@ -57,24 +57,24 @@ Game::~Game(void)
 //Mouse Events
 void Game::OnTourchDown(int x, int y)
 {
-	for(int i = 0; i < handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		if(handlers[i]->IsInside(Vector2(x, y)))
+		if(handler->IsInside(Vector2(x, y)))
 		{
-			if(String::IsEquals(handlers[i]->name,"Arrow Left"))
+			if(String::IsEquals(handler->name,"Arrow Left"))
 			{
 				SceneManager::GetInstance()->OnKeyDown(KeyManager::S_CHAR_LEFT);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
-			else if(String::IsEquals(handlers[i]->name,"Arrow Right"))
+			else if(String::IsEquals(handler->name,"Arrow Right"))
 			{
 				SceneManager::GetInstance()->OnKeyDown(KeyManager::S_CHAR_RIGHT);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
-			else if(String::IsEquals(handlers[i]->name,"Arrow Up"))
+			else if(String::IsEquals(handler->name,"Arrow Up"))
 			{
 				SceneManager::GetInstance()->OnKeyDown(KeyManager::S_CHAR_UP);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
 		}
 	}
@@ -92,38 +92,38 @@ void Game::OnTourchDown(int x, int y)
 };
 void Game::OnTourchUp(int x,int y)
 {
-	for(int i = 0; i < handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		if(handlers[i]->IsInside(Vector2(x, y)))
+		if(handler->IsInside(Vector2(x, y)))
 		{
-			if(String::IsEquals(handlers[i]->name,"Arrow Left"))
+			if(String::IsEquals(handler->name,"Arrow Left"))
 			{
 				SceneManager::GetInstance()->OnKeyUp(KeyManager::S_CHAR_LEFT);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
-			else if(String::IsEquals(handlers[i]->name,"Arrow Right"))
+			else if(String::IsEquals(handler->name,"Arrow Right"))
 			{
 				SceneManager::GetInstance()->OnKeyUp(KeyManager::S_CHAR_RIGHT);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
-			else if(String::IsEquals(handlers[i]->name,"Arrow Up"))
+			else if(String::IsEquals(handler->name,"Arrow Up"))
 			{
 				SceneManager::GetInstance()->OnKeyUp(KeyManager::S_CHAR_UP);
-				handlers[i]->swapTexture();
+                handler->swapTexture();
 			}
-			else if(String::IsEquals(handlers[i]->name, "Reload"))
+			else if(String::IsEquals(handler->name, "Reload"))
 			{
 				SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneLoading);
 			}
-			else if(String::IsEquals(handlers[i]->name, "Pause"))
+			else if(String::IsEquals(handler->name, "Pause"))
 			{
 				SceneManager::GetInstance()->OnKeyUp(KeyManager::S_CHAR_P);
 			}
-			else if(String::IsEquals(handlers[i]->name, "Replay"))
+			else if(String::IsEquals(handler->name, "Replay"))
 			{
 				SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneLoading);
 			}
-			else if(String::IsEquals(handlers[i]->name, "Next Level"))
+			else if(String::IsEquals(handler->name, "Next Level"))
 			{
 				this->level++;
 				score->logScore();
@@ -175,10 +175,10 @@ void Game::OnKeyUp(unsigned char keyChar)
 
 void Game::DrawText(int x, int y, Vector4 color)
 {
-	int textHeight = 50;
-	int s = 50 + x;
-	int t = Globals::screenHeight - textHeight + y;
-	TextManager::GetInstance()->RenderString("Level", color, s, t,64);
+	GLfloat textHeight = 50.0f;
+    GLfloat s = 50.0f + x;
+    GLfloat t = Globals::screenHeight - textHeight + y;
+	TextManager::GetInstance()->RenderString("Level", color, s, t, 64);
 	TextManager::GetInstance()->RenderNumber( this->level, color,s + 80, t,64);
 	TextManager::GetInstance()->RenderString("Score", color, s + 150, t,64);
 	TextManager::GetInstance()->RenderString(score->getStringScore(), color,s + 250, t,64);
@@ -190,39 +190,39 @@ void Game::DrawText(int x, int y, Vector4 color)
 }
 void Game::Draw()
 {
-
-	for(int i = 0; i < this->objects.size(); i++)
+    for (auto &object : objects)
 	{
-		this->objects[i]->Draw();
+		object->Draw();
 	}
 	
-	for(int i = 0; i < this->handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		this->handlers[i]->Draw();
+        handler->Draw();
 	}
 
 	/* DRAW TEXT IN SCREEN */
 	//this->DrawText(-1, -1, Vector4(0.7, 0.7, 0.7, 0.8));
-	this->DrawText(1, 1, Vector4(0.7, 0.7, 0.7, 0.8));
-	this->DrawText(0, 0, Vector4(1, 1, 1, 0.8));
+	this->DrawText(1, 1, Vector4(0.7f, 0.7f, 0.7f, 0.8f));
+	this->DrawText(0, 0, Vector4(1, 1, 1, 0.8f));
 	if(game_over)
 	{
 		
-		float scaleX = (float)Globals::screenWidth/800;
-		float scaleY = (float)Globals::screenHeight/600;
+		float scaleX = (float)Globals::screenWidth/ Globals::screenWidthRatio;
+		float scaleY = (float)Globals::screenHeight/ Globals::screenHeightRatio;
 		float scale = scaleX>scaleY ? scaleY : scaleX;
 		scaleX = scaleX > scale ? (scaleX + 1)/2 : scaleX;
 		scaleY = scaleY > scale ? (scaleY + 1)/2 : scaleY;
 
+        unsigned int pixelSize = (unsigned int) (200 * scale);
 		if(this->complete)
 		{
-			TextManager::GetInstance()->RenderString("Level Complete!",Vector4(0.9,0.7,0.1,0.8),80*scaleX,380*scaleY,200*scale);
-			TextManager::GetInstance()->RenderString(score->getStringScore(),Vector4(0.8,0.1,0.1,0.8),350*scaleX,280*scaleY,200*scale);
+			TextManager::GetInstance()->RenderString("Level Complete!",Vector4(0.9f, 0.7f, 0.1f, 0.8f),80*scaleX,380*scaleY, pixelSize);
+			TextManager::GetInstance()->RenderString(score->getStringScore(),Vector4(0.8f, 0.1f, 0.1f, 0.8f),350*scaleX,280*scaleY, pixelSize);
 		}
 		else
 		{
-			TextManager::GetInstance()->RenderString("Game Over!",Vector4(0.8,0.8,0.3,0.8),170*scaleX,390*scaleY,200*scale);
-			TextManager::GetInstance()->RenderString(score->getStringScore(),Vector4(0.8,0.1,0.1,0.8),380*scaleX,280*scaleY,200*scale);
+			TextManager::GetInstance()->RenderString("Game Over!",Vector4(0.8f, 0.8f, 0.3f, 0.8f),170*scaleX,390*scaleY, pixelSize);
+			TextManager::GetInstance()->RenderString(score->getStringScore(),Vector4(0.8f, 0.1f, 0.1f, 0.8f),380*scaleX,280*scaleY, pixelSize);
 		}
 	}
 
@@ -235,9 +235,9 @@ void Game::Update(float dt)
 	{
 		SceneManager::GetInstance()->currentScene = SceneManager::GetInstance()->sceneLoading;
 	}
-	for(int i = 0 ; i < handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		handlers[i]->Update(dt);
+        handler->Update(dt);
 	}
 
 
@@ -342,10 +342,10 @@ void Game::Update(float dt)
 
 	if(this->bounce)
 	{
-		float lim_left = Globals::screenWidth*0.2;
-		float lim_right = Globals::screenWidth*0.8;
-		float lim_top = Globals::screenHeight*0.8;
-		float lim_bottom = Globals::screenHeight*0.2;
+		float lim_left = Globals::screenWidth*0.2f;
+		float lim_right = Globals::screenWidth*0.8f;
+		float lim_top = Globals::screenHeight*0.8f;
+		float lim_bottom = Globals::screenHeight*0.2f;
 
 		Vector2 d = this->bounce->position - this->camera->GetPosition();
 
@@ -388,22 +388,22 @@ void Game::Update(float dt)
 
 Object* Game::GetObjectByName(char* name)
 {
-	for(int i = 0; i < objects.size(); i++)
+    for (auto &object : objects)
 	{
-		if(String::IsEquals(name, objects[i]->name))
+		if(String::IsEquals(name, object->name))
 		{
-			return objects[i];
+			return object;
 		}
 	}
 	return NULL;
 }
 Object* Game::GetHandlerByName(char* name)
 {
-	for(int i = 0; i < handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		if(String::IsEquals(name, handlers[i]->name))
+		if(String::IsEquals(name, handler->name))
 		{
-			return handlers[i];
+			return handler;
 		}
 	}
 	return NULL;
@@ -415,7 +415,7 @@ void Game::ReduceLovecity()
 	if(body)
 	{
 		b2Vec2 v = body->GetLinearVelocity();
-		body->SetLinearVelocity(b2Vec2(v.x*0.98, v.y));
+		body->SetLinearVelocity(b2Vec2(v.x*0.98f, v.y));
 	}
 }
 
@@ -482,7 +482,7 @@ void Game::AddObjectToWorld(Object *o)
 			b2CircleShape circle;
 			circle.m_radius = pix2met((obj->GetWidth()*obj->scale.x)/2);
 			//Console::log("SM class. Line 380: %f\n", circle.m_radius);
-			int density = 500;
+			GLfloat density = 500;
 			body->CreateFixture(&circle, density);
 			
 		}
@@ -507,7 +507,7 @@ void Game::AddObjectToWorld(Object *o)
 			//Độ ma sát [0 -> 1]
 			fix->SetFriction(0.5);
 			//Độ nảy của vật  [0 -> 1]
-			fix->SetRestitution(0.1);
+			fix->SetRestitution(0.1f);
 		}
 		//tính lại khối lượng
 		body->ResetMassData();
@@ -526,11 +526,10 @@ void Game::InitBox2D()
 	Memory::Delete(b2dWorld);
 	b2dWorld = new b2World(l_gravity);
 
-	
-	for(int i = 0; i < objects.size(); i++)
+    for (auto &object : objects)
 	{
-		if(objects[i]->GetType() != ObjectType::BACKGROUND)
-			AddObjectToWorld(objects[i]);
+		if(object->GetType() != ObjectType::BACKGROUND)
+			AddObjectToWorld(object);
 	}
 
 	b2dWorld->SetContactListener((ContactListener::GetInstance()));
@@ -609,10 +608,10 @@ void Game::ContactProcess(Object* o1, Object* o2)
 		this->handlers = SceneManager::ReadMapFromJSON(s);
 		delete[] s;
 		//Rebind Handle
-		for(int i = 0; i < this->handlers.size(); i++)
+        for (auto &handler : handlers)
 		{
-			this->handlers[i]->scaleSelf();
-			this->handlers[i]->Bind();
+            handler->scaleSelf();
+            handler->Bind();
 		}
 
 		score->saveScore();
@@ -640,19 +639,21 @@ void Game::LoadLevel(int level)
 	this->handlers = SceneManager::ReadMapFromJSON(s);
 	delete[] s;
 
-	for(int i = 0; i < this->handlers.size(); i++)
+    for (auto &handler : handlers)
 	{
-		this->handlers[i]->Bind();
+        handler->Bind();
 	}
 
 
 	/* Align top top item*/
 	Initcontrol();
 	int margin = 10;
-	for(int i = 0; i < this->handlerTop.size(); i++)
+    //for (auto &handlerT : handlerTop)
+    int handlerTopSize = this->handlerTop.size();
+    for (int i = 0; i < handlerTopSize; i++)
 	{
-		this->handlerTop[i]->position.x = Globals::screenWidth - (handlerTop[i]->GetWidth() + 20)*(i+1);
-		this->handlerTop[i]->position.y = Globals::screenHeight - handlerTop[i]->GetHeight()/2 - margin;
+        handlerTop[i]->position.x = Globals::screenWidth - (handlerTop[i]->GetWidth() + 20)*(i+1);
+        handlerTop[i]->position.y = Globals::screenHeight - handlerTop[i]->GetHeight()/2 - margin;
 	}
 
 
@@ -668,9 +669,9 @@ void Game::LoadLevel(int level)
 		this->objects  = SceneManager::ReadMapFromJSON(String::concat(BOUNCE_DATA_LOCATION, "Data/Level0.json"));
 	}
 	//binding
-	for(int i = 0; i < this->objects.size(); i++)
+    for (auto &object : objects)
 	{
-		this->objects[i]->Bind();
+        object->Bind();
 	}
 
 	bounce = (Bounce*)GetObjectByName("Bounce");

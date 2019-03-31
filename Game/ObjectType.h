@@ -19,12 +19,7 @@ public:
 	static const int LABEL			= 10012;
 
 
-	static const char** GetList()
-	{
-		const char* type[] = {"object", "box", "bounce", "food", "thorn",
-			"triangle", "handler", "button", "cloud", "target","background","levelgame", "label"};
-		return type;
-	}
+    static const char** GetList();
 
 	static int GetType(const char* object_type);
 
@@ -33,5 +28,5 @@ public:
 private:
 		static const int Begin = OBJECT;
 		static const int End = LABEL;
-
+        static const char* type[];
 };

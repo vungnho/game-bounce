@@ -30,6 +30,7 @@ public:
 	static const int S_KEY_F				= 1 << 23;
 	static const int S_KEY_R				= 1 << 24;
 	static const int S_KEY_Q				= 1 << 25;
+	static const int S_KEY_X				= 1 << 26;
 
 	//static const unsigned char S_CHAR_NONE			= 0;
 	static const unsigned char S_CHAR_LEFT_FLIPPER	= 1;
@@ -53,11 +54,12 @@ public:
 	static const unsigned char S_CHAR_D				= 'D';
 	static const unsigned char S_CHAR_W				= 'W';
 	static const unsigned char S_CHAR_C				= 'C';
-	static const unsigned char S_CHAR_V				= 'V';
+    static const unsigned char S_CHAR_V             = 'V';
 	static const unsigned char S_CHAR_E				= 'E';
 	static const unsigned char S_CHAR_F				= 'F';
 	static const unsigned char S_CHAR_R				= 'R';
 	static const unsigned char S_CHAR_Q				= 'Q';
+    static const unsigned char S_CHAR_X             = 'X';
 
 	static int s_keyPressed;
 

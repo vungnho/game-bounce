@@ -12,7 +12,7 @@ Camera::Camera(void):  moveSpeed(200.0), rotateSpeed(2.0), velMovingY(1), velMov
 	this->target = Vector3(0, 0, 0);
 	this->fovY = 1.0f;
 	this->aspect = 2.0;
-	this->nearPlane = 0.1;
+	this->nearPlane = 0.1f;
 	this->farPlane = 500;
 
 	if(0)
@@ -21,7 +21,7 @@ Camera::Camera(void):  moveSpeed(200.0), rotateSpeed(2.0), velMovingY(1), velMov
 	}
 	else
 	{
-		this->SetOrtho(0, Globals::screenWidth, 0, Globals::screenHeight, -1.0, 1.0);
+		this->SetOrtho(0, (GLfloat) Globals::screenWidth, 0, (GLfloat) Globals::screenHeight, -1.0f, 1.0f);
 		glDepthMask(GL_FALSE);
 	}
 
@@ -68,9 +68,9 @@ void Camera::SetOrtho(GLfloat leftPlane, GLfloat rightPlane, GLfloat bottomPlane
 	 float deltaZ = farPlane - nearPlane;
 
 	 this->projectView = MvpMatrix::CreateMatrix(
-		 Vector4(2.0 / deltaX,	0,				0,				0),
-		 Vector4(0,				2.0 / deltaY,	0,				0),
-		 Vector4(0,				0,				-2.0 / deltaZ,	0),
+		 Vector4(2.0f / deltaX,	0,				0,				0),
+		 Vector4(0,				2.0f / deltaY,	0,				0),
+		 Vector4(0,				0,				-2.0f / deltaZ,	0),
 		 Vector4(-(leftPlane + rightPlane) / deltaX, -(bottomPlane + topPlane) / deltaY, -(nearPlane + farPlane) / deltaZ, 1.0)
 		 );
 }
@@ -145,7 +145,7 @@ void Camera::MoveInX(float dt)
 
 void Camera::Update(float dt)
 {
-	this->SetOrtho(0, Globals::screenWidth, 0, Globals::screenHeight, -1.0, 1.0);
+	this->SetOrtho(0, (GLfloat) Globals::screenWidth, 0, (GLfloat) Globals::screenHeight, -1.0f, 1.0f);
 }
 
 

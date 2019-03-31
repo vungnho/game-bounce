@@ -21,3 +21,11 @@
 		return GetList()[object_type - Begin];
 
 	}
+
+    const char* ObjectType::type[] = { "object", "box", "bounce", "food", "thorn",
+            "triangle", "handler", "button", "cloud", "target","background","levelgame", "label" };
+
+    const char** ObjectType::GetList()
+    {
+        return type;
+    }

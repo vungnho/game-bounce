@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -13,17 +13,18 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE2AA971-FD72-4802-AD40-DA86B91FAF3A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -38,6 +39,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -45,7 +47,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -60,7 +62,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -144,6 +146,7 @@
     <ClInclude Include="myDefines.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectType.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -163,6 +166,80 @@
     <ClInclude Include="Thorn.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Resources\Fonts\angrybirds-regular.ttf" />
+    <Font Include="..\Resources\Fonts\Candice.ttf" />
+    <Font Include="..\Resources\Fonts\DroidSans.ttf" />
+    <Font Include="..\Resources\Fonts\segoeui.ttf" />
+    <Font Include="..\Resources\Fonts\segoeuil.ttf" />
+    <Font Include="..\Resources\Fonts\Snacker.ttf" />
+    <Font Include="..\Resources\Fonts\waltograph42.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Resources\Data\EndGame.json" />
+    <None Include="..\Resources\Data\Handler.json" />
+    <None Include="..\Resources\Data\Level0.json" />
+    <None Include="..\Resources\Data\Level1.json" />
+    <None Include="..\Resources\Data\Level2.json" />
+    <None Include="..\Resources\Data\Level3.json" />
+    <None Include="..\Resources\Data\LevelMenu.json" />
+    <None Include="..\Resources\Data\Menu.json" />
+    <None Include="..\Resources\Data\Menu1.json" />
+    <None Include="..\Resources\Data\RM.json" />
+    <None Include="..\Resources\Data\Score.json" />
+    <None Include="..\Resources\Data\SM.json" />
+    <None Include="..\Resources\Data\Splash.json" />
+    <None Include="..\Resources\Models\Circle_r100.json" />
+    <None Include="..\Resources\Models\Ground.json" />
+    <None Include="..\Resources\Models\hexagon.json" />
+    <None Include="..\Resources\Models\Square.json" />
+    <None Include="..\Resources\Models\Triangle.json" />
+    <None Include="..\Resources\Shaders\Object.fs" />
+    <None Include="..\Resources\Shaders\Object.vs" />
+    <None Include="..\Resources\Shaders\Text.fs" />
+    <None Include="..\Resources\Shaders\Text.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Resources\Data\Score.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\Textures\arr2_02.tga" />
+    <Image Include="..\Resources\Textures\arr2_05.tga" />
+    <Image Include="..\Resources\Textures\arr_02.tga" />
+    <Image Include="..\Resources\Textures\arr_05.tga" />
+    <Image Include="..\Resources\Textures\background.tga" />
+    <Image Include="..\Resources\Textures\background2.tga" />
+    <Image Include="..\Resources\Textures\background3.tga" />
+    <Image Include="..\Resources\Textures\backgroundLV1.tga" />
+    <Image Include="..\Resources\Textures\backgroundLV2.tga" />
+    <Image Include="..\Resources\Textures\backgroundLv3.tga" />
+    <Image Include="..\Resources\Textures\backgroundLV4.tga" />
+    <Image Include="..\Resources\Textures\bounce.tga" />
+    <Image Include="..\Resources\Textures\box.tga" />
+    <Image Include="..\Resources\Textures\brick.tga" />
+    <Image Include="..\Resources\Textures\brok.tga" />
+    <Image Include="..\Resources\Textures\button_level.tga" />
+    <Image Include="..\Resources\Textures\candy.tga" />
+    <Image Include="..\Resources\Textures\cloud.tga" />
+    <Image Include="..\Resources\Textures\door.tga" />
+    <Image Include="..\Resources\Textures\gai.tga" />
+    <Image Include="..\Resources\Textures\gai2.tga" />
+    <Image Include="..\Resources\Textures\gr.tga" />
+    <Image Include="..\Resources\Textures\none.tga" />
+    <Image Include="..\Resources\Textures\o.png" />
+    <Image Include="..\Resources\Textures\o.tga" />
+    <Image Include="..\Resources\Textures\pause_05.tga" />
+    <Image Include="..\Resources\Textures\play_05.tga" />
+    <Image Include="..\Resources\Textures\reload_05.tga" />
+    <Image Include="..\Resources\Textures\sky.tga" />
+    <Image Include="..\Resources\Textures\skyLv2.tga" />
+    <Image Include="..\Resources\Textures\skyLv3.tga" />
+    <Image Include="..\Resources\Textures\skyLv4.tga" />
+    <Image Include="..\Resources\Textures\touch_move_05.tga" />
+    <Image Include="..\Resources\Textures\touch_point_05.tga" />
+    <Image Include="..\Resources\Textures\tran.tga" />
+    <Image Include="..\Resources\Textures\tran1.tga" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

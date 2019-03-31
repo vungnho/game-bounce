@@ -47,8 +47,8 @@ MapEditor::~MapEditor(void)
 void MapEditor::OnTourchDown(int x, int y)
 {
 
-	lastMousePos.x = lastMouseDown.x = x;
-	lastMousePos.y = lastMouseDown.y = y;
+	lastMousePos.x = lastMouseDown.x = (GLfloat) x;
+	lastMousePos.y = lastMouseDown.y = (GLfloat) y;
 	tourchTime = 0;
 
 	/*MAP EDITOR*/
@@ -56,13 +56,15 @@ void MapEditor::OnTourchDown(int x, int y)
 	Vector2 real_point = Vector2(x + this->camera->position.x, y + this->camera->position.y);
 	//Console::log("Mouse is at [%.0f, %.0f ].\n", real_point.x, real_point.y);
 
-	for(int i = 0; i < objects.size(); i++)
+    int objectsSize = objects.size();
+	for(int i = 0; i < objectsSize; i++)
 	{
 		Object* o = objects[i];
 		bool is_inside = o->IsInside(real_point);
 		if(is_inside)
 		{
 			this->selectedObject = objects[i];
+			this->selectedId = i;
 			Console::log("%s selected.\n", this->selectedObject->name);
 		}
 
@@ -74,8 +76,8 @@ void MapEditor::OnTourchDown(int x, int y)
 void MapEditor::OnTourchUp(int x,int y)
 {
 
-	int dx = x - lastMouseDown.x;
-	int dy = y - lastMouseDown.y;
+	//int dx = x - lastMouseDown.x;
+	//int dy = y - lastMouseDown.y;
 
 
 	//Reset
@@ -86,20 +88,14 @@ void MapEditor::OnTourchUp(int x,int y)
 };
 void MapEditor::OnTourchMove(int x, int y)
 {
-
-	int dx = x - lastMousePos.x;
-	int dy = y - lastMousePos.y;
-
+    Vector2 newPos = Vector2(x - lastMousePos.x, y - lastMousePos.y);
 
 	if(this->selectedObject != NULL)
 	{
-		selectedObject->position.x += dx;
-		selectedObject->position.y += dy;
+        selectedObject->position += newPos;
 	}
 
-
-	lastMousePos.x = x;
-	lastMousePos.y = y;
+	lastMousePos = newPos;
 
 };
 
@@ -127,19 +123,36 @@ void MapEditor::OnKeyDown(unsigned char keyChar)
 		}
 
 	}
-	//CTRL + V: paste to clipple
-	//if(KeyManager::GetInstance()->IsKeyPressed(KeyManager::S_KEY_CTRL))
-	{
-		if(keyChar == KeyManager::S_CHAR_V)
-		{
-			Object* o = CopyObject(clipple);
-			o->Bind();
-			o->position = Vector2(camera->position.x, camera->position.y)  + this->lastMousePos;
-			//Adding a object
-			this->objects.push_back(o);
-			return;
-		}
-	}
+    //CTRL + V: paste to clipple
+    //if(KeyManager::GetInstance()->IsKeyPressed(KeyManager::S_KEY_CTRL))
+    {
+        if (keyChar == KeyManager::S_CHAR_V)
+        {
+            if (!clipple) {
+                this->clipple = new Food();
+            }
+            Object* o = CopyObject(clipple);
+            o->Bind();
+            o->position = Vector2(camera->position.x, camera->position.y) + this->lastMousePos;
+            //Adding a object
+            this->objects.push_back(o);
+            return;
+        }
+    }
+
+    //CTRL + X: delete object
+    //if(KeyManager::GetInstance()->IsKeyPressed(KeyManager::S_KEY_CTRL))
+    {
+        if (keyChar == KeyManager::S_CHAR_X)
+        {
+            if (selectedObject == objects[selectedId])
+            {
+                //Delete the selected object
+                this->objects.erase(objects.begin() + selectedId);
+            }
+            return;
+        }
+    }
 
 
 }
@@ -155,9 +168,9 @@ void MapEditor::OnKeyUp(unsigned char keyChar)
 
 void MapEditor::Draw()
 {
-	for(int i = 0; i < this->objects.size(); i++)
+    for (auto &object : objects)
 	{
-		this->objects[i]->Draw();
+        object->Draw();
 	}
 };
 void MapEditor::Update(float delta_time)
@@ -181,10 +194,10 @@ void MapEditor::LoadMap(const char *file_name)
 	this->objects  = SceneManager::ReadMapFromJSON(file_name);
 
 	//binding
-	for(int i = 0; i < this->objects.size(); i++)
-	{
-		this->objects[i]->Bind();
-	}
+    for (auto &object : objects)
+    {
+        object->Bind();
+    }
 }
 
 
@@ -266,8 +279,8 @@ void MapEditor::SaveScence()
 
 	//document["objects"]["size"] = objects.size();
 
-
-	for(int i = 0; i < this->objects.size(); i++)
+    int objectsSize = this->objects.size();
+	for(int i = 0; i < objectsSize; i++)
 	{
 		Json::Value t_obj;
 		t_obj["id"] = i;//objects[i]->Id;

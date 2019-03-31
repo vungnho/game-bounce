@@ -25,10 +25,10 @@ LevelMenu::LevelMenu(): Scene()
 	const char* s = String::concat(BOUNCE_DATA_LOCATION, "Data/LevelMenu.json");
 	this->levelMenu = SceneManager::ReadMapFromJSON(s);
 	delete[] s;
-	for(int i = 0; i < this->levelMenu.size(); i++)
+    for (auto &levelM : levelMenu)
 	{
-		this->levelMenu[i]->scaleSelf();
-		this->levelMenu[i]->Bind();
+        levelM->scaleSelf();
+        levelM->Bind();
 	}
 
 
@@ -50,14 +50,13 @@ void LevelMenu::OnTourchDown(int x, int y)
 };
 void LevelMenu::OnTourchUp(int x,int y)
 {
-
-	for(int i = 0; i < levelMenu.size(); i++)
+    for (auto &levelM : levelMenu)
 	{
-		if(levelMenu[i]->IsInside(Vector2(x, y)))
+		if(levelM->IsInside(Vector2(x, y)))
 		{
-			if(levelMenu[i]->GetType()==ObjectType::LEVELGAME)
+			if(levelM->GetType()==ObjectType::LEVELGAME)
 			{
-				int val = atoi(((Button*) this->levelMenu[i])->value);
+				int val = atoi(((Button*) levelM)->value);
 				//Console::log("Selected level %d \n",val);
 
 				SceneManager::GetInstance()->sceneGame->level = val;
@@ -65,7 +64,7 @@ void LevelMenu::OnTourchUp(int x,int y)
 				//SceneManager::GetInstance()->sceneGame->Initialaze();
 				//SceneManager::GetInstance()->currentScene = SceneManager::GetInstance()->sceneGame;
 			}
-			else if(levelMenu[i]->GetType()==ObjectType::HANDLER)
+			else if(levelM->GetType()==ObjectType::HANDLER)
 			{
 				SceneManager::GetInstance()->ChangeScene(SceneManager::GetInstance()->sceneMenu);
 			}
@@ -95,9 +94,9 @@ void LevelMenu::OnKeyUp(unsigned char keyChar)
 
 void LevelMenu::Draw()
 {
-	for(int i = 0; i < this->levelMenu.size(); i++)
+    for (auto &levelM : levelMenu)
 	{
-		this->levelMenu[i]->Draw();
+        levelM->Draw();
 	}
 };
 void LevelMenu::Update(float delta_time)

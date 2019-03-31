@@ -12,7 +12,7 @@ public:
 	void Draw();
 	float GetWidth();
 	float GetHeight();
-	float pixel_Size;
+    unsigned int pixel_Size;
 	Vector4 color;
 	char value[256];
 
